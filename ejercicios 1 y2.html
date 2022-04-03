@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+
+        <div class="ejercicio 1">
+            <form method="post" name="ejercicio1">
+                <label>Ingresa dos numeros</label>
+                <table>
+                    <tr>
+                        <td>Ingresa el numero uno</td>
+                       <td><input type="text" name="num1" id="num1" placeholder="numero 1"></td> 
+                    </tr>
+                    <tr>
+                        <td>Ingresa el numero dos</td>
+                       <td><input type="text" name="num2" id="num2" placeholder="numero 2"></td> 
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="calcula" onclick="calcular()"></td>
+                    </tr>
+                    <tr>
+                        <td>El resultado es:</td>
+                        <td><input type="text" name="resultado" id="resultado" readonly="readonly" placeholder="Resultado"></td>
+                    </tr>
+
+
+                </table>
+
+              
+
+            </form>
+        </div>
+        <br>
+        <br>
+        <hr>    
+        <div class="ejercicio 2">
+            <form method="post" name="ejercicio2">
+                <label>Leer tres numeros diferentes y poner el mayor de los tres</label>
+
+                <table>
+                    <tr>
+                        <td>Ingresa el numero 1</td>
+                        <td><input type="text" name="numero1" id="numero1" placeholder="Ingresa el primer numero"></td>
+                    </tr>
+                    <tr>
+                        <td>Ingresa el numero 2 </td>
+                        <td><input type="text" name="numero2" id="numero2" placeholder="Ingresa el segundo numero"></td>
+                    </tr>
+                    <tr>
+                        <td>Ingresa el numero 3</td>
+                        <td><input type="text" name="numero3" id="numero3" placeholder="Ingresa el tercer numero"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="compara" id="compara" onclick="comparar()"></td>
+                    </tr>
+
+                    <tr>
+                        <td>El numero mayor es</td>
+                        <td><input type="text" name="resultado" id="resultado" readonly="readonly" placeholder="el numero mayor es"></td>
+                    </tr>
+                </table>
+        
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
