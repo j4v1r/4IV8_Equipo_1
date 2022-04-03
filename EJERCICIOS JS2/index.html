@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EjercicioS II </title>
+</head>
+<body>
+    
+    <!-- Problema 3 -->
+    <div class="problema-container" >
+        <h2 class="problema-title" >Problema #3</h2>
+        <h3>Determinar la cantidad de dinero que recibirá un trabajador por concepto 
+            de horas extras trabajadas en una empresa, sabiendo que cuando las horas 
+            de trabajo exceden de 40, el resto se consideran horas extras y estas es
+            pagan al doble de una hora normal cuando no exceden de 8, si las horas 
+            extras exceden de 7 se pagan las primeras 7 al doble de lo que se pagan las
+            horas nomales y el resto al triple.
+        </h3>
+        <div class="problema-content" >
+            <table class="problema-table">
+                <tbody>
+                    <tr>
+                        <td>Introduce las horas de trabajo</td>
+                        <td><input type="number"
+                            class="problema-input"
+                            id="p3-x1" onpaste="return false"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introduce el pago por hora</td>
+                        <td><input type="number"
+                            class="problema-input"
+                            id="p3-x2" onpaste="return false"> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="problema-button"
+                style="margin-top: 1rem;" onclick="problema3()"  >Calcular sueldo</button>
+                <pre class="problema-output" 
+                id="p3-output" >Esperando datos ...</pre>
+        </div>
+    </div>
+    <!-- Problema 4 -->
+    <div class="problema-container" >
+        <h2 class="problema-title" >Problema #4</h2>
+        <h3>Calcular la utilidad que un trabajador recibe en el reparo anual
+            de utilidades si este se le asigna como un porcentaje de su salario
+            mensual que depende de sus antiguedad en la empresa de acuerdo con la
+            sig. Tabla:
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tiempo</th>
+                        <th>Utilidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Menos de 1 año</td>
+                        <td>5% del salario</td>
+                    </tr>
+                    <tr>
+                        <td>1 año o más y menos de 2 años</td>
+                        <td>7% del salario</td>
+                    </tr>
+                    <tr>
+                        <td>2 años o más y menos de 5 años</td>
+                        <td>10% del salario</td>
+                    </tr>
+                    <tr>
+                        <td>5 años o más y menos de 10 años</td>
+                        <td>15% del salario</td>
+                    </tr>
+                    <tr>
+                        <td>10 años o más</td>
+                        <td>20% del salario</td>
+                    </tr>
+                </tbody>
+            </table>
+        </h3>
+        <div class="problema-content" >
+            <table class="problema-table">
+            <tr>
+                <td>Introduce tu salario mensual</td>
+                <td><input type="number"
+                    class="problema-input"
+                    id="p4-x1" onpaste="return false"> 
+                </td>
+            </tr>
+            <tr>
+                <td>Introduce tu antiguedad en años</td>
+                <td><input type="number"
+                    class="problema-input"
+                    id="p4-x2" onpaste="return false"> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="problema-button"
+        style="margin-top: 1rem;" onclick="problema4()"  >Calcular utilidad</button>
+        <pre class="problema-output" 
+        id="p4-output" >Esperando datos ...</pre>
+        </div>
+    </div>
+</body>
+</html>
