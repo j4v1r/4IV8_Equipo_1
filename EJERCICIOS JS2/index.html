@@ -5,9 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EjercicioS II </title>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
     
+    <div class="ejercicio 1">
+       
+            <label>Ingresa dos numeros</label>
+            <table>
+                <tr>
+                    <td>Ingresa el numero uno</td>
+                   <td><input type="text" name="num1" id="numero1" placeholder="numero 1"></td> 
+                </tr>
+                <tr>
+                    <td>Ingresa el numero dos</td>
+                   <td><input type="text" name="num2" id="numero2" placeholder="numero 2"></td> 
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="button" value="calcula" onclick="problema1n()"></td>
+                </tr>
+                <tr>
+                    <td>El resultado es:</td>
+                    <td><input type="text" name="resultado" id="resul" readonly="readonly" placeholder="Resultado"></td>
+                </tr>
+
+
+            </table>
+
+          
+
+
+    </div>
+    <br>
+    <br>
+    <hr>    
+    <div class="ejercicio 2">
+ 
+            <label>Leer tres numeros diferentes y poner el mayor de los tres</label>
+
+            <table>
+                <tr>
+                    <td>Ingresa el numero 1</td>
+                    <td><input type="text" name="numero1" id="numero1" placeholder="Ingresa el primer numero"></td>
+                </tr>
+                <tr>
+                    <td>Ingresa el numero 2 </td>
+                    <td><input type="text" name="numero2" id="numero2" placeholder="Ingresa el segundo numero"></td>
+                </tr>
+                <tr>
+                    <td>Ingresa el numero 3</td>
+                    <td><input type="text" name="numero3" id="numero3" placeholder="Ingresa el tercer numero"></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td><input type="button" value="compara" id="compara" onclick="problema2()"></td>
+                </tr>
+
+                <tr>
+                    <td>El numero mayor es</td>
+                    <td><input type="text" name="resultado" id="resultado" readonly="readonly" placeholder="el numero mayor es"></td>
+                </tr>
+            </table>
+    
+   
+
+    </div>
+    
+    
+        
     <!-- Problema 3 -->
     <div class="problema-container" >
         <h2 class="problema-title" >Problema #3</h2>
@@ -103,5 +170,6 @@
         id="resultado4" >Esperando datos ...</pre>
         </div>
     </div>
+    <script src="JS/validacion.js"></script>
 </body>
 </html>
