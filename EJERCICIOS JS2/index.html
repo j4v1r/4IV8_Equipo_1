@@ -73,6 +73,7 @@
     </div>
     
     
+        
     <!-- Problema 3 -->
     <div class="problema-container" >
         <h2 class="problema-title" >Problema #3</h2>
@@ -90,25 +91,23 @@
                         <td>Introduce las horas de trabajo</td>
                         <td><input type="number"
                             class="problema-input"
-                            id="p3-x1" onpaste="return false"> 
+                            id="horas" onpaste="return false"> 
                         </td>
                     </tr>
                     <tr>
                         <td>Introduce el pago por hora</td>
                         <td><input type="number"
                             class="problema-input"
-                            id="p3-x2" onpaste="return false"> 
+                            id="sueldo" onpaste="return false"> 
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="problema-button"
-                style="margin-top: 1rem;" onclick="problema3()"  >Calcular sueldo</button>
+            <button type="button" class="problema-button" onclick="problema3n()"  >Calcular sueldo</button>
                 <pre class="problema-output" 
-                id="p3-output" >Esperando datos ...</pre>
+                id="resul3" >Esperando datos ...</pre>
         </div>
     </div>
-    <br>
     <!-- Problema 4 -->
     <div class="problema-container" >
         <h2 class="problema-title" >Problema #4</h2>
@@ -153,22 +152,21 @@
                 <td>Introduce tu salario mensual</td>
                 <td><input type="number"
                     class="problema-input"
-                    id="p4-x1" onpaste="return false"> 
+                    id="salario" onpaste="return false"> 
                 </td>
             </tr>
             <tr>
                 <td>Introduce tu antiguedad en años</td>
                 <td><input type="number"
                     class="problema-input"
-                    id="p4-x2" onpaste="return false"> 
+                    id="antiguedad" onpaste="return false"> 
                 </td>
             </tr>
         </tbody>
     </table>
-    <button type="button" class="problema-button"
-        style="margin-top: 1rem;" onclick="problema4()"  >Calcular utilidad</button>
+    <button type="button" class="problema-button" onclick="problema4()"  >Calcular utilidad</button>
         <pre class="problema-output" 
-        id="p4-output" >Esperando datos ...</pre>
+        id="resultado4" >Esperando datos ...</pre>
         </div>
     </div>
 </body>
