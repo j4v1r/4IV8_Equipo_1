@@ -49,8 +49,8 @@ function problema3n(){
 
     var validar =   /^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/;
 
-    var horas = document.getElementById('horas').value;
-    var sueldo = document.getElementById('sueldo').value;
+    var horas = document.querySelector('#horas').value;
+    var sueldo = document.querySelector('#sueldo').value;
 
     var hrs = parseFloat(horas);
     var sueld = parseFloat(sueldo);
@@ -75,7 +75,7 @@ function problema3n(){
 
         }
 
-        Document.querySelector('#resul3').textContent = "El salario a recibir es " + resul
+        document.querySelector('#resul3').textContent = "El salario a recibir es " + resul
 
     }else{
 
