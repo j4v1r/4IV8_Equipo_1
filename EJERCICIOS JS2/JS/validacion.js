@@ -148,8 +148,8 @@ function problema4(){
             document.querySelector("#resultado4").textContent = "La utilidad es de: " + uti
         }
         else if( pant >= 10){
-            var uti = psal*0.2
-            document.querySelector('#resultado4').textContent = "La utilidad es de: " + uti
+            var utilidad = psal*0.2
+            document.querySelector('#resultado4').textContent = "La utilidad es de: " + utilidad
         }
         else{
             alert("Datos invalidos")
