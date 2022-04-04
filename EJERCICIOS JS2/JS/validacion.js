@@ -112,8 +112,8 @@ function problema3n(){
 
 function problema4(){
 
-    var sal = document.querySelector('#p4-x1').value;
-    var ant = document.querySelector('#p4-x2').value;
+    var sal = document.querySelector('#salario').value;
+    var ant = document.querySelector('#antiguedad').value;
 
     var psal = parseFloat(sal);
     var pant = parseFloat(ant);
@@ -133,23 +133,23 @@ function problema4(){
     else if(sal.match(vnum1) || ant.match(vnum1)){
         if(pant < 1){
             var uti = psal*0.05
-            document.querySelector("p4-output").textContent = "La utilidad es de: " + uti
+            document.querySelector("#resultado4").textContent = "La utilidad es de: " + uti
         }
         else if( pant >= 1 && pant < 2){
             var uti = psal*0.07
-            document.querySelector("p4-output").textContent = "La utilidad es de: " + uti
+            document.querySelector("#resultado4").textContent = "La utilidad es de: " + uti
         }
         else if( pant >= 2 && pant < 5){
             var uti = psal*0.1
-            document.querySelector("p4-output").textContent = "La utilidad es de: " + uti
+            document.querySelector("#resultado4").textContent = "La utilidad es de: " + uti
         }
         else if( pant >= 5 && pant < 10){
             var uti = psal*0.15
-            document.querySelector("p4-output").textContent = "La utilidad es de: " + uti
+            document.querySelector("#resultado4").textContent = "La utilidad es de: " + uti
         }
         else if( pant >= 10){
-            var uti = psal*0.2
-            document.querySelector('#p4-output').textContent = "La utilidad es de: " + uti
+            var utilidad = psal*0.2
+            document.querySelector('#resultado4').textContent = "La utilidad es de: " + utilidad
         }
         else{
             alert("Datos invalidos")
