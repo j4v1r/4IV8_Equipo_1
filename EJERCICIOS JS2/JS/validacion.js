@@ -75,7 +75,7 @@ function problema3n(){
 
         }
 
-        document.getElementById('resul3').value = resul;
+        Document.querySelector('#resul3').textContent = "El salario a recibir es " + resul
 
     }else{
 
