@@ -28,19 +28,17 @@ p{
     font-size: 1.2rem;
     height: auto;
     color: white;
-    padding: 25px 0;
+    padding: 2rem 1rem;
     left: 0;
     top: 0;
     right: 0;
     position: fixed;
 } 
     .header a{
-        height: auto;
         color: white;
         text-decoration: none;
     }
 .logo-encabezado{
-    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center; 
@@ -72,7 +70,7 @@ p{
             }
 
 .main{
-    padding-top: 8rem;
+    padding-top: 12rem;
 }
 
 footer{
@@ -82,11 +80,11 @@ footer{
     height: auto;
 }  
 
-@media only screen and(max-width: 727px){
+@media only screen and (max-width: 767px){
 .menu-icon{
     display: block;
     cursor: pointer;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 1rem;
 }
 .navegation {
     width: 100%;
