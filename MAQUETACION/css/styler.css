@@ -1,0 +1,171 @@
+body{ 
+    background-color: rgba(152, 193, 217, 1);
+    color: black; 
+    font-size: 1.2rem;
+    line-height: 1.6em;
+    font-family: 'Arial';
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}h2{
+    font-size: 1.5rem;
+    line-height: 1.3em;
+}  
+p{
+    margin-bottom: 1.5em;
+}
+.container {  
+    width: 85%;
+    max-width: 70rem;
+    margin: 0 auto ;
+    text-align: justify;
+    
+}
+  
+.header{
+    background-color: rgba(61, 90, 128, 1);
+    font-size: 1.2rem;
+    height: auto;
+    color: white;
+    padding: 2rem 1rem;
+    left: 0;
+    top: 0;
+    right: 0;
+    position: fixed;
+} 
+    .header a{
+        color: white;
+        text-decoration: none;
+    }
+.logo-encabezado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    flex-wrap: wrap;
+}
+.logo{
+    letter-spacing: 15px;
+    font-size: 1.3em;
+}
+.menu-icon{
+    display: none;
+}
+.navegation ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+    .navegation ul li{
+        display: inline-block;
+    }
+        .navegation ul li a{
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
+            .navegation ul li a:hover{
+                background-color: rgb(75, 107, 150);
+            }
+
+.main{
+    padding-top: 12rem;
+}
+
+footer{
+    background-color: rgba(224, 251, 252, 1);
+    text-align: center;
+    margin-top: auto;
+    height: auto;
+}  
+
+@media only screen and (max-width: 767px){
+.menu-icon{
+    display: block;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+}
+.navegation {
+    width: 100%;
+    margin-top: 1rem;
+} 
+    .navegation ul{
+        display: none;
+    }
+    .navegation ul.show{
+        display: block;
+    }
+    .navegation ul li{
+        display: block;
+    }
+        .navegation ul li a{
+            display: block;
+            padding: 0.5rem 0;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
+            .navegation ul li a:hover{
+                background-color: rgb(75, 107, 150);
+            }
+}
+
+.registrof{
+    font-size: 1.27rem;
+    text-align: center;
+    margin-top: 8rem;
+    padding-top: 10rem;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.registro{
+    font-size: 1.27rem;
+    margin: auto;
+    text-align: left;
+}
+
+.esp{
+    height: 3.5rem;
+}
+
+.esp1{
+    height: 1.5rem;
+}
+
+.esp2{
+    width: 1.5rem;
+}
+
+.esp3{
+    width: 8rem;
+}
+
+.button {
+    background-color: #DCEEFF;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+.button a{
+    text-decoration: none;
+    color: black;
+}
+.boton{
+    text-align: right;
+}
+
+td{
+    align-items: center;
+    margin: auto;
+}
+
+input{
+    font-size: 1.27rem;
+}

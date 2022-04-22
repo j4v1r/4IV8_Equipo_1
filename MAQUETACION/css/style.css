@@ -1,0 +1,110 @@
+.ventana {
+    background-color: #DCEEFF;
+    width: 35%;
+    padding: 1.4rem;
+    margin: 20% auto;
+    position: relative;
+    border-radius: 1.5rem;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    top: -200px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s;
+}
+
+#IrVentanaFlotante:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#IrVentanaFlotante2:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#IrVentanaFlotante3:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#IrVentanaFlotante4:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+/* .opcion { 
+    /*width: 100px;
+          background-color:yellow;
+  border:1px solid black;
+}*/
+
+.nuevoingrediente{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    
+}
+
+a.cerrar{
+    text-decoration:none;
+    align-items: left;
+    text-align: left;
+}
+
+.ingredienteform{
+    align-items: center;
+}
+
+.insr{
+    text-align: left;
+}
+
+.espacio{
+    height: 2rem;
+}
+
+.cancelar{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+
+.fila1{
+    width: 40%;
+    text-align: right;
+    font-size: 13px;
+}
+
+.fila2{
+    width: 60%;
+    font-size: 13px;
+}
+
+.espacio1{
+    height: 1rem;
+}
+
+button{
+    border-radius: 0.4rem;
+    border: 1px solid grey;
+    background-color: transparent;
+    color: #3450B4;
+    font-size: 0.625rem;
+    padding: 0.5rem 0.5rem;
+}
+
+button:hover{
+    background-color: #3450B4;
+    color: #DCEEFF;
+}
+
