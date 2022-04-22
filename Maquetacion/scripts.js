@@ -1,6 +1,6 @@
 jQuery('document').ready(function($){
     var menuBtn = $('.menu-icon'),
-        menu = $('.navegation ul');
+        menu = $('.menulat ul');
 
     menuBtn.click(function(){
 

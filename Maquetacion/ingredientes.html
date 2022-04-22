@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredientes</title>
+    <link rel="stylesheet"   href="css/style.css" >
+    <link rel="stylesheet" href="css/styleG.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="icon" href="img/logo.png">
+    
+</head>
+<body>
+    <header class="header">
+        <div class="logo-encabezado">
+            <a href="Bienvenida.html" class="logo"><img id="mi-id" src="img/logo.png" alt=""></a>
+            <a href="#" class="logo">KELL</a>
+            <nav class="bienvenida">
+               <ul>
+                
+                   <li><a href="Bienvenida.html">BIENVENIDA</a></li>
+               </ul>
+              
+            </nav>
+            <a href="" class="logo"><img id="mu-id" src="img/iconc.png" alt=""></a>
+        </div>
+    </header>
+    <div class="menu">
+         <nav class="menulat">
+            <span class="menu-icon">VER MENÚ</span>
+            <ul>
+                <li><a href="">INGREDIENTES</a></li>
+                <li><a href="Receta.html">RECETAS</a></li>
+                <li><a href="Menu.html">MENÚ</a></li>
+                <li><a href="Inventario.html">INVENTARIO</a></li>
+                <li><a href="config.html">CONFIGURACIÓN</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <main>
+        <div class="container">
+            <div class="tittle">
+                <p>Ingredientes</p>
+            </div>
+            <div class="text">
+                <p>Conforme se agregen recetas se visualizarán en forma de lista </p>
+                <br>
+            <p>   Si se <a href="#IrVentanaFlotante2">selecciona algun elemento de la lista</a>, se desplagará una 
+                ventana para visualizar y/o modificar sus datos</p>
+            </div>
+            <div class="opcion2">
+                <a href="#IrVentanaFlotante">NUEVO INGREDIENTE</a>
+            </div>
+            <div id="IrVentanaFlotante" class="modal">
+                <div class="ventana">
+                    <a href="#"  class="cerrar">
+                        X
+                    </a>
+                    <br>
+                    <br>
+                    <form action="" method="post" class="ingredienteform">
+                        <table class="nuevoingrediente">
+                            <tr class="insr">
+                                <td colspan="2"><b>Nuevo Ingrediente</b></td>
+                            </tr>
+                            <tr class="insr">
+                                <td colspan="2">Introduzca los datos del nuevo ingrediente</td>
+                            </tr>
+                            <tr class="espacio"></tr>
+                            <tr>
+                                <td class="fila1">Nombre: </td>
+                                <td class="fila2"><input type="text" id="ingredientenuevo"></td>
+                            </tr>
+                            <tr class="espacio1"></tr>
+                            <tr>
+                                <td class="fila1">Precio: </td>
+                                <td class="fila2"><input type="text" id="precionuevo"></td>
+                            </tr>
+                            <tr class="espacio1"></tr>
+                            <tr>
+                                <td class="fila1">Cantidad: </td>
+                                <td class="fila2"><input type="text" id="cantidadnueva"></td>
+                            </tr>
+                            <tr class="espacio1"></tr>
+                            <tr>
+                                <td class="fila1">Unidad de Medida: </td>
+                                <td class="fila2"><input type="text" id="umnueva"></td>
+                            </tr>
+                            <tr class="espacio"></tr>
+                            <tr>
+                                <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
+                                <td class="fila2"><button onclick="location.href='#'" type="button"><b>AGREGAR</b></button></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <!-- <a href="#IrVentanaFlotante2" style='text-decoration:none;'>
+                        Avanzar
+                    </a> -->
+                </div>
+            </div>
+        
+            <div id="IrVentanaFlotante2" class="modal">
+                <div class="ventana">
+                    <a href="#" style='text-decoration:none;'>
+                        X
+                    </a>
+                    <br>
+                    <br>
+                    <form action="" method="post" class="ingredienteform">
+                        <table class="nuevoingrediente">
+                            <tr class="insr">
+                                <td colspan="2"><b>Modificar Ingrediente</b></td>
+                            </tr>
+                            <tr class="insr">
+                                <td colspan="2">Introduzca los nuevos datos del ingrediente</td>
+                            </tr>
+                            <tr class="espacio"></tr>
+                            <tr>
+                                <td class="fila1">Nombre: </td>
+                                <td class="fila2"><input type="text" id="ingredientenuevo" placeholder="Nombre de Ingrediente"></td>
+                            </tr>
+                            <tr class="espacio1"></tr>
+                            <tr>
+                                <td class="fila1">Precio: </td>
+                                <td class="fila2"><input type="text" id="precionuevo" placeholder="Precio de Ingrediente"></td>
+                            </tr>
+                            <tr class="espacio1"></tr>
+                            <tr>
+                                <td class="fila1">Cantidad: </td>
+                                <td class="fila2"><input type="text" id="cantidadnueva" placeholder="Cantidad de Ingrediente"></td>
+                            </tr>
+                            <tr class="espacio1"></tr>
+                            <tr>
+                                <td class="fila1">Unidad de Medida: </td>
+                                <td class="fila2"><input type="text" id="umnueva" placeholder="UM de Ingrediente"></td>
+                            </tr>
+                            <tr class="espacio"></tr>
+                            <tr>
+                                <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
+                                <td class="fila2"><button onclick="location.href='#'" type="button"><b>AGREGAR</b></button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>        
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts.js"></script>
+
+</body>
+</html>

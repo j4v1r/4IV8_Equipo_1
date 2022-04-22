@@ -1,0 +1,141 @@
+
+.header{
+    background-color: rgba(61, 90, 128, 1);
+    font-size: 1.2rem;
+    height: auto;
+    color: white;
+    padding: 2rem 1rem;
+    left: 0;
+    top: 0;
+    right: 0;
+    position: fixed;
+} 
+    .header a{
+        color: white;
+        text-decoration: none;
+    }
+    .container {  
+        width: 85%;
+        max-width: 70rem;
+        margin: 0 auto ;
+        text-align: justify;
+        
+    }
+
+.logo-encabezado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    flex-wrap: wrap;
+}
+.logo{
+    letter-spacing: 15px;
+    font-size: 1.3em;
+}
+.menu-icon{
+    display: none;
+}
+.navegation ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+    .navegation ul li{
+        display: inline-block;
+    }
+        .navegation ul li a{
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
+            .navegation ul li a:hover{
+                background-color: rgb(75, 107, 150);
+            }
+
+body{ 
+    background-color: rgba(152, 193, 217, 1);
+    color: black; 
+    font-size: 1.2rem;
+    line-height: 1.6em;
+    font-family: 'Arial';
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer{
+    background-color: rgba(224, 251, 252, 1);
+    text-align: center;
+    margin-top: auto;
+    height: auto;
+}
+
+@media only screen and (max-width: 767px){
+.menu-icon{
+    display: block;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+}
+.navegation {
+    width: 100%;
+    margin-top: 1rem;
+} 
+    .navegation ul{
+        display: none;
+    }
+    .navegation ul.show{
+        display: block;
+    }
+    .navegation ul li{
+        display: block;
+    }
+        .navegation ul li a{
+            display: block;
+            padding: 0.5rem 0;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
+            .navegation ul li a:hover{
+                background-color: rgb(75, 107, 150);
+            }
+}
+
+.iniciarS{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 13rem;
+    margin-bottom: 5rem;
+    font-size: x-large;
+}
+
+.iniciarS img{
+    width: 50%;
+    margin-right: 7%;
+    margin-top: 5%;
+}
+
+.iniciarS label{
+    margin-left: 10%;
+}
+
+.in{
+    width: 80%;
+    height: 20px;
+}
+
+.btn1{
+    margin-right: 5%;
+    margin-top: 7%;
+    width: 30%;
+    height: 30px;
+}
+
+
+#a{
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+}
