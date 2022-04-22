@@ -1,0 +1,61 @@
+*{
+    padding: 0;
+    margin: 0;
+    color:rgb(252, 252, 252);
+    
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+
+}
+
+body{   
+    background-image: url(../Diseño/DOTCOTE.gif);
+    background-size: cover;
+    color: rgb (0,0,0);
+    display: flex;
+    flex-direction:column;
+    font-size: 18px;
+    
+}
+
+.container-1{
+    border-radius: 10rem;
+    width: 9rem;
+    height: 9rem;
+    background-color: darkslateblue;
+    margin-top:26rem;
+   margin-left:18rem;
+   
+   animation: animacion_test 2s alternate infinite;
+}
+
+.container-2{
+    border-radius: 10rem;
+    width: 9rem;
+    height: 9rem;
+   margin-top:-8.5rem;
+   margin-left:46rem;
+   border: 15px 15px;
+    background-color: darkslateblue;
+    
+    animation: animacion_test 2s alternate infinite;
+}
+.text{
+    align-items: center;
+    text-align: center;
+    padding:55px 25px;
+}
+.container-2 a{
+    text-decoration: none;
+    text-align: center;
+}
+.container-1 a{
+    text-decoration: none;
+    text-align: center;
+    
+}
+@keyframes animacion_test{
+    0% {background-color: #E23E57;}
+    50% { background-color: #4A2341;}
+    100% { background-color: #130B1A;}
+}
