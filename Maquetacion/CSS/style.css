@@ -1,111 +1,110 @@
-body{ 
-    background-color: rgba(152, 193, 217, 1);
-    color: black; 
-    font-size: 1.2rem;
-    line-height: 1.6em;
-    font-family: 'Arial';
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}h2{
-    font-size: 1.5rem;
-    line-height: 1.3em;
-}  
-p{
-    margin-bottom: 1.5em;
+.ventana {
+    background-color: #DCEEFF;
+    width: 35%;
+    padding: 1.4rem;
+    margin: 20% auto;
+    position: relative;
+    border-radius: 1.5rem;
 }
-.container {  
-    width: 85%;
-    max-width: 70rem;
-    margin: 0 auto ;
-    text-align: justify;
+
+.modal {
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    top: -200px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s;
+}
+
+#IrVentanaFlotante:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#IrVentanaFlotante2:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#IrVentanaFlotante3:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#IrVentanaFlotante4:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+/* .opcion { 
+    /*width: 100px;
+          background-color:yellow;
+  border:1px solid black;
+}*/
+
+.nuevoingrediente{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
     
 }
-  
-.header{
-    background-color: rgba(61, 90, 128, 1);
-    font-size: 1.2rem;
-    height: auto;
-    color: white;
-    padding: 2rem 1rem;
-    left: 0;
-    top: 0;
-    right: 0;
-    position: fixed;
-} 
-    .header a{
-        color: white;
-        text-decoration: none;
-    }
-.logo-encabezado{
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    flex-wrap: wrap;
-}
-.logo{
-    letter-spacing: 15px;
-    font-size: 1.3em;
-}
-.menu-icon{
-    display: none;
-}
-.navegation ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-    .navegation ul li{
-        display: inline-block;
-    }
-        .navegation ul li a{
-            display: block;
-            padding: 0.5rem 1rem;
-            transition: all 0.4s linear;
-            border-radius: 5px;
-        }
-            .navegation ul li a:hover{
-                background-color: rgb(75, 107, 150);
-            }
 
-.main{
-    padding-top: 12rem;
+a.cerrar{
+    text-decoration:none;
+    align-items: left;
+    text-align: left;
 }
 
-footer{
-    background-color: rgba(224, 251, 252, 1);
-    text-align: center;
-    margin-top: auto;
-    height: auto;
-}  
+.ingredienteform{
+    align-items: center;
+}
 
-@media only screen and (max-width: 767px){
-.menu-icon{
-    display: block;
-    cursor: pointer;
-    padding: 0.4rem 1rem;
+.insr{
+    text-align: left;
 }
-.navegation {
-    width: 100%;
-    margin-top: 1rem;
-} 
-    .navegation ul{
-        display: none;
-    }
-    .navegation ul.show{
-        display: block;
-    }
-    .navegation ul li{
-        display: block;
-    }
-        .navegation ul li a{
-            display: block;
-            padding: 0.5rem 0;
-            transition: all 0.4s linear;
-            border-radius: 5px;
-        }
-            .navegation ul li a:hover{
-                background-color: rgb(75, 107, 150);
-            }
+
+.espacio{
+    height: 2rem;
 }
+
+.cancelar{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+
+.fila1{
+    width: 40%;
+    text-align: right;
+    font-size: 13px;
+}
+
+.fila2{
+    width: 60%;
+    font-size: 13px;
+}
+
+.espacio1{
+    height: 1rem;
+}
+
+button{
+    border-radius: 0.4rem;
+    border: 1px solid grey;
+    background-color: transparent;
+    color: #3450B4;
+    font-size: 0.625rem;
+    padding: 0.5rem 0.5rem;
+}
+
+button:hover{
+    background-color: #3450B4;
+    color: #DCEEFF;
+}
+

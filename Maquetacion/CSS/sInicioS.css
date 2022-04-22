@@ -1,28 +1,4 @@
-body{ 
-    background-color: rgba(152, 193, 217, 1);
-    color: black; 
-    font-size: 1.2rem;
-    line-height: 1.6em;
-    font-family: 'Arial';
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}h2{
-    font-size: 1.5rem;
-    line-height: 1.3em;
-}  
-p{
-    margin-bottom: 1.5em;
-}
-.container {  
-    width: 85%;
-    max-width: 70rem;
-    margin: 0 auto ;
-    text-align: justify;
-    
-}
-  
+
 .header{
     background-color: rgba(61, 90, 128, 1);
     font-size: 1.2rem;
@@ -38,6 +14,14 @@ p{
         color: white;
         text-decoration: none;
     }
+    .container {  
+        width: 85%;
+        max-width: 70rem;
+        margin: 0 auto ;
+        text-align: justify;
+        
+    }
+
 .logo-encabezado{
     display: flex;
     justify-content: space-between;
@@ -69,8 +53,16 @@ p{
                 background-color: rgb(75, 107, 150);
             }
 
-.main{
-    padding-top: 12rem;
+body{ 
+    background-color: rgba(152, 193, 217, 1);
+    color: black; 
+    font-size: 1.2rem;
+    line-height: 1.6em;
+    font-family: 'Arial';
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 footer{
@@ -78,7 +70,7 @@ footer{
     text-align: center;
     margin-top: auto;
     height: auto;
-}  
+}
 
 @media only screen and (max-width: 767px){
 .menu-icon{
@@ -110,62 +102,40 @@ footer{
             }
 }
 
-.registrof{
-    font-size: 1.27rem;
-    text-align: center;
-    margin-top: 8rem;
-    padding-top: 10rem;
-    width: 85%;
-    margin: 0 auto;
-}
-
-.registro{
-    font-size: 1.27rem;
-    margin: auto;
-    text-align: left;
-}
-
-.esp{
-    height: 3.5rem;
-}
-
-.esp1{
-    height: 1.5rem;
-}
-
-.esp2{
-    width: 1.5rem;
-}
-
-.esp3{
-    width: 8rem;
-}
-
-.button {
-    background-color: #DCEEFF;
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.2rem;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-}
-.button a{
-    text-decoration: none;
-    color: black;
-}
-.boton{
-    text-align: right;
-}
-
-td{
+.iniciarS{
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: auto;
+    margin-top: 13rem;
+    margin-bottom: 5rem;
+    font-size: x-large;
 }
 
-input{
-    font-size: 1.27rem;
+.iniciarS img{
+    width: 50%;
+    margin-right: 7%;
+    margin-top: 5%;
+}
+
+.iniciarS label{
+    margin-left: 10%;
+}
+
+.in{
+    width: 80%;
+    height: 20px;
+}
+
+.btn1{
+    margin-right: 5%;
+    margin-top: 7%;
+    width: 30%;
+    height: 30px;
+}
+
+
+#a{
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
 }

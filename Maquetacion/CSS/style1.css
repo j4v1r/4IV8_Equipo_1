@@ -63,7 +63,7 @@ p{
             display: block;
             padding: 0.5rem 1rem;
             transition: all 0.4s linear;
-            border-radius: 5px;
+            border-radius: 0313rem;
         }
             .navegation ul li a:hover{
                 background-color: rgb(75, 107, 150);
@@ -110,62 +110,3 @@ footer{
             }
 }
 
-.registrof{
-    font-size: 1.27rem;
-    text-align: center;
-    margin-top: 8rem;
-    padding-top: 10rem;
-    width: 85%;
-    margin: 0 auto;
-}
-
-.registro{
-    font-size: 1.27rem;
-    margin: auto;
-    text-align: left;
-}
-
-.esp{
-    height: 3.5rem;
-}
-
-.esp1{
-    height: 1.5rem;
-}
-
-.esp2{
-    width: 1.5rem;
-}
-
-.esp3{
-    width: 8rem;
-}
-
-.button {
-    background-color: #DCEEFF;
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.2rem;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-}
-.button a{
-    text-decoration: none;
-    color: black;
-}
-.boton{
-    text-align: right;
-}
-
-td{
-    align-items: center;
-    margin: auto;
-}
-
-input{
-    font-size: 1.27rem;
-}
