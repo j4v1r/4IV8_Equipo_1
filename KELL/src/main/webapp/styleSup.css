@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: rgb(238, 244, 248);
+}
+
+nav{
+    background: rgba(61, 90, 128, 1);
+    height: 100px;
+    width: 100%;
+}
+
+.e_logo{
+    position: absolute;
+    padding: 20px 50px;
+}
+
+.logo{
+    height: 100px;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+    margin-top: -2rem;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 133px;
+    margin: 0 1rem;
+}
+
+nav ul li a{
+    color: aliceblue;
+    font-size: large;
+    padding: 7px 14px;
+    border-radius: 3px;
+}
+
+li a.inicial, li a:hover{
+    background: rgb(11, 42, 82);
+    transition: 0.5s;
+}
+
+.btn_1{
+    font-size: large;
+    color: aliceblue;
+    float: right;
+    line-height: 133px;
+    margin-right: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.container {  
+    width: 85%;
+    max-width: 70rem;
+    margin: 0 auto ;
+    text-align: justify;
+    font-size: x-large;
+    margin-top: 5%;
+    font-family: 'Poppins', sans-serif;
+}
+
+#check{
+    display: none;
+}
+
+@media (max-width: 952px){
+    .e_logo{
+        padding-left: 20px;
+    }
+    nav ul li a{
+        font-size: medium;
+    }
+}
+
+@media (max-width: 858px){
+    .btn_1{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: rgb(11, 42, 82);
+        top: 140px;
+        left: -100%;
+        text-align: center;
+        transition: all 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a{
+        font-size: medium;
+    }
+    li a:hover, li a.active{
+        background: none;
+        color: aquamarine;
+    }
+    #check:checked ~ ul{
+        left: 0;
+    }
+}
+
+
+/* CLASES PARA LA CAJA DE IN SESION */
+.caja_insesion{
+    background-color: blue;
+    width: 40%;
+    height: 20rem;
+    margin-top: -3%;
+}
