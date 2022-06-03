@@ -4,6 +4,9 @@
     Author     : Alumno
 --%>
 
+<%@page import="Controlador.AccionesMArticulo"%>
+<%@page import="Modelo.MArticulo"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -99,13 +102,23 @@
                   </tr>
                 </thead>
                 <tbody>
+                <% 
+                    List<MArticulo> listaMA = AccionesMArticulo.getAllMArticulo();
+                    for(MArticulo e : listaMA){
+                %>
                   <tr>
-                    <td>Tomate</td>
-                    <td>$15.50</td>
-                    <td>$51</td>
-                    <td>$20</td>
-                    <td><a href="#modificar_menu"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></td>
+                    <td><%=e.getNombre_articulo()%></td>
+                    <td><%=e.getPrecio_venta()%></td>
+                    <td><%=e.getCosto_marticulo()%></td>
+                    <td><%=e.getGanacia_articulo()%></td>
+                    <td>
+                        <a href="#modificar_menu"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                        <a ><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                    </td>
                   </tr>
+                <% 
+                    }
+                %>
                 </tbody>
               </table>
         
@@ -125,7 +138,7 @@
                     X
                 </a>
                 <br>
-                <form action="" method="post" class="menuform">
+                <form action="guardarMArticulo" method="post" class="menuform" name="registromenu">
                     <table class="nuevomenu">
                         <tr class="insr">
                             <td colspan="2"><b>Nuevo Artículo</b></td>
@@ -136,23 +149,19 @@
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="nom_menu_new"></td>
+                            <td class="fila2"><input type="text" id="nom_menu_new" name="nom_menu_new"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Precio de venta: </td>
-                            <td class="fila2"><input type="number" id="precio_rec_new"></td>
-                        </tr><tr class="espacio"></tr>
-                        <tr>
-                            <td class="fila1"><a href="#aña_rec"><button onclick="location.href='#'" type="button"><b>AÑADIR RECETA</b></button></td>
-                            <td class="fila2"><a href="#aña_ing"><button onclick="location.href='#'" type="button"><b>AÑADIR INGREDIENTE</b></button></td>
+                            <td class="fila2"><input type="number" id="precio_rec_new" name="precio_rec_new"></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <!-- <td class="fila1"><button onclick="location.href='#'" type="button"><b>AÑADIR RECETA</b></button></td>
                             <td class="fila2"><button onclick="location.href='#'" type="button"><b>AÑADIR INGREDIENTE</b></button></td> -->
                             <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class="fila2"><button onclick="location.href='#'" type="button"><b>AGREGAR</b></button></td>
+                            <td class="fila2"><button type="submit"><b>AGREGAR</b></button></td>
                         </tr>
                         
                     </table>

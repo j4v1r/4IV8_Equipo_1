@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
+
 import java.sql.*;
 import Modelo.EReceta;
 import java.util.ArrayList;
