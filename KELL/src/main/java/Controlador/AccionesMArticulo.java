@@ -86,4 +86,31 @@ public class AccionesMArticulo {
         return lista;
     }
     
+    public static int eliminarMArticulo(int id_articulo){
+        //Estado de la query, se elimino el marticulo o no
+        int estatus = 0;
+        
+        try{
+            //Conexión
+            Connection con = Conexion.getConection();
+            
+            String q = "delete from marticulo where id_articulo=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_articulo);
+            
+            estatus = ps.executeUpdate();
+            
+            
+            System.out.println("Se elimino el marticulo");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo elimnar el marticulo");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
+    
 }

@@ -113,7 +113,7 @@
                     <td><%=e.getGanacia_articulo()%></td>
                     <td>
                         <a href="#modificar_menu"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                        <a ><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        <a href="eliminarMArticulo?id_articulo=<%=e.getId_articulo()%>""><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                   </tr>
                 <% 
