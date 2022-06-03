@@ -141,7 +141,7 @@
                     X
                 </a>
                 <br>
-                <form action="guardarIngrediente" method="post" class="ingredienteform">
+                <form action="guardarIngrediente" method="post" class="ingredienteregistro" name="ingredienteregistro">
                     <table class="nuevoingrediente">
                         <tr class="insr">
                             <td colspan="2"><b>Nuevo Ingrediente</b></td>
@@ -183,7 +183,7 @@
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class="fila2"><button type="submit"><b>AGREGAR</b></button></td>
+                            <td class="fila2"><button onclick="registroingrediente()" type="button"><b>AGREGAR</b></button></td>
                         </tr>
                     </table>
                 </form>
@@ -259,5 +259,6 @@
     </main>
 
     <script src="JS/scriptC.js"></script>
+    <script src="JS/validacion.js"></script>
 </body>
 </html>
