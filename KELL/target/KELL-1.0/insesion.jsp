@@ -40,7 +40,7 @@
     <main>
         <div class="container">
             <div class="caja_insesion">
-                <form method="post" action="sesionUsuario">
+                <form method="post" action="sesionUsuario" name="inicios" class="inicios">
                     <h3>WELCOME</h3>
                 <p id="username">Username</p>
                 <input type="text" id="inusername" name="inusername">

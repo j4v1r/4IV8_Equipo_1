@@ -69,6 +69,7 @@ public class AccionesIngrediente {
             
             ResultSet rs = ps.executeQuery();
             
+            //Recorre el arrego de la tabla MIngrediente
             while(rs.next()){
                 //donde se crea el objeto del empleado
                 MIngrediente e = new MIngrediente();

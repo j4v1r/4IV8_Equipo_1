@@ -34,6 +34,10 @@ public class sesionUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+            HttpSession sesionCli = request.getSession();
+            
+            
             String correo, contrasena;
             
             correo = request.getParameter("inusername");

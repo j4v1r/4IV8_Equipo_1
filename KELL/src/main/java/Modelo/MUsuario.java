@@ -46,7 +46,7 @@ public class MUsuario {
             ps.setString(2, contrasena);
             //ejecutamos la busqueda
             rs = ps.executeQuery();
-            //buscamos al usuario
+            //Se busca el usuario
             while(rs.next()){
                 usuario = new MUsuario();
                 //cprivilegio pri = new cprivilegio();
@@ -54,7 +54,6 @@ public class MUsuario {
                 usuario.setContrasena(rs.getString("contrasena"));
                 usuario.setId_rol(rs.getInt("id_rol"));
                 usuario.setId_persona(rs.getInt("id_persona"));
-                //pri.setPrivilegio_tipo(rs.getString("privilegio_tipo"));
                 
                 break;
             }
@@ -72,7 +71,7 @@ public class MUsuario {
             }catch(Exception ex){
             System.out.println("No se encontro la clase MUsuario");
             System.out.println(ex.getMessage());
-        }
+            }
         }
         return usuario;
    }
