@@ -113,7 +113,10 @@
                     <td><%=e.getCosto_ereceta()%></td>
                     <td><%=e.getCantidad_receta()%></td>
                     <td><%=e.getNombre_unidad()%></td>
-                    <td><a href="#modificar_receta"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></td>
+                    <td>
+                        <a href="#modificar_receta"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                        <a href="eliminarEReceta?id_ereceta=<%=e.getId_ereceta()%>""><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                    </td>
                   </tr>
                 <% 
                     }
@@ -145,6 +148,7 @@
                         <tr class="insr">
                             <td colspan="2">Introduzca los datos de la receta</td>
                         </tr>
+                        <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Nombre: </td>
                             <td class="fila2"><input type="text" id="nom_rec_new" name="nom_rec_new"></td>
@@ -170,11 +174,6 @@
                         %>
                             </select>
                             </td>
-                        </tr>
-                        <tr class="espacio"></tr>
-                        <tr>
-                            <td class="fila1"><a href="#aña_rec"><button onclick="location.href='#'" type="button"><b>AÑADIR RECETAS</b></button></td>
-                            <td class="fila2"><a href="#aña_ing"><button onclick="location.href='#'" type="button"><b>AÑADIR INGREDIENTES</b></button></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>

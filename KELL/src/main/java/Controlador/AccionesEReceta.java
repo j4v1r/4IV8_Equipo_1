@@ -49,6 +49,7 @@ public class AccionesEReceta {
             
     }
     
+    //Consulta de todas las erecetas
     public static List<EReceta> getAllEReceta(){
         //Declaración Array List
         List<EReceta> lista = new ArrayList<EReceta>();
@@ -84,6 +85,34 @@ public class AccionesEReceta {
             System.out.println(ex.getMessage());
         }
         return lista;
+    }
+    
+    public static int eliminarEReceta(int id_ereceta){
+        //Estado de la query, se elimino la ereceta o no
+        int estatus = 0;
+        
+        try{
+            //Conexión
+            Connection con = Conexion.getConection();
+            
+            String q = "delete from ereceta where id_ereceta=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_ereceta);
+            
+            estatus = ps.executeUpdate();
+            
+            
+            
+            System.out.println("Se elimino la ereceta");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo elimnar la ereceta");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
     }
     
 }

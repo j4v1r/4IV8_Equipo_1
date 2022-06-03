@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import Modelo.MIngrediente;
-import Modelo.CUnidadMedida;
 
 /**
  *
@@ -54,13 +53,13 @@ public class AccionesIngrediente {
     }
     
     
-    //consultar todos los empleados
+    //Consulta de todos los ingredientes
     public static List<MIngrediente> getAllIngredientes(){
-        //primero declarar el arraylist
+        //Declaración ArrayList
         List<MIngrediente> lista = new ArrayList<MIngrediente>();
         
         try{
-            //establecer es la conexion
+            //Conexión
             Connection con = Conexion.getConection();
             
             String q = "select * from ingredienteMuestra";
@@ -71,7 +70,7 @@ public class AccionesIngrediente {
             
             //Recorre el arrego de la tabla MIngrediente
             while(rs.next()){
-                //donde se crea el objeto del empleado
+                //Se crea objeto del ingrediente
                 MIngrediente e = new MIngrediente();
                 e.setId_ingrediente(rs.getInt(1));
                 e.setNombre_ingrediente(rs.getString(2));
@@ -132,12 +131,12 @@ public class AccionesIngrediente {
     
     //borrar empleado
     public static int eliminarIngrediente(int id_ingrediente){
-        //necesito saber el estado de la querry para si
-        //se ejecuto o no
+        
+        //Estado de la query, se elimino el ingrediente o no
         int estatus = 0;
         
         try{
-            //establecer es la conexion
+            //Conexión
             Connection con = Conexion.getConection();
             
             String q = "delete from mingrediente where id_ingrediente=?";

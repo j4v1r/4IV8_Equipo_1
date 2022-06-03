@@ -28,6 +28,10 @@
         <servlet-name>eliminarInventario</servlet-name>
         <servlet-class>Servlets.eliminarInventario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarEReceta</servlet-name>
+        <servlet-class>Servlets.eliminarEReceta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarIngrediente</servlet-name>
         <url-pattern>/guardarIngrediente</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>eliminarInventario</servlet-name>
         <url-pattern>/eliminarInventario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarEReceta</servlet-name>
+        <url-pattern>/eliminarEReceta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
