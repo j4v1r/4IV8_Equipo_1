@@ -39,7 +39,7 @@ public class guardarMArticulo extends HttpServlet {
             float precio_venta_art;
             
             nombre_art = request.getParameter("nom_menu_new");
-            precio_venta_art = parseFloat(request.getParameter("precio_rec_new"));
+            precio_venta_art = parseFloat(request.getParameter("precio_menu_new"));
             
             MArticulo e = new MArticulo ();
             

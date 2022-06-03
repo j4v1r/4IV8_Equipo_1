@@ -113,7 +113,7 @@
                     <td><%=e.getGanacia_articulo()%></td>
                     <td>
                         <a href="#modificar_menu"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                        <a ><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        <a href="eliminarMArticulo?id_articulo=<%=e.getId_articulo()%>""><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                   </tr>
                 <% 
@@ -154,14 +154,14 @@
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Precio de venta: </td>
-                            <td class="fila2"><input type="number" id="precio_rec_new" name="precio_rec_new"></td>
+                            <td class="fila2"><input type="number" id="precio_menu_new" name="precio_menu_new"></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <!-- <td class="fila1"><button onclick="location.href='#'" type="button"><b>AÑADIR RECETA</b></button></td>
                             <td class="fila2"><button onclick="location.href='#'" type="button"><b>AÑADIR INGREDIENTE</b></button></td> -->
                             <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class="fila2"><button type="submit"><b>AGREGAR</b></button></td>
+                            <td class="fila2"><button onclick="registroartmenu()" type="button"><b>AGREGAR</b></button></td>
                         </tr>
                         
                     </table>
@@ -486,5 +486,7 @@
     </main>
 
     <script src="JS/scriptC.js"></script>
+    <script src="JS/validacion.js"></script>
+    
 </body>
 </html>
