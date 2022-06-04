@@ -94,17 +94,14 @@ function registroreceta(){
         document.getElementById("nom_rec_new").focus();
         return false;
         
-    }else if(cantidad=="" || !(cantidad.match(numeros)) || cantidad<0 || cantidad>1000){
+    }else if(cantidad=="" || !(cantidad.match(numeros)) || cantidad<0 || cantidad>1000 ||  cantidad==0){
         alert("La cantidad de la receta es inválida");
         document.getElementById("cant_rec_new").focus();
         return false;
         
-        
-        
-    
     }else{
 
-        document.registroreceta.submit();
+        document.registroereceta.submit();
 
     }
 
@@ -223,13 +220,13 @@ function registroartmenu(){
         alert("El nombre de ingrediente es inválido");
         document.getElementById("nom_menu_new").focus();
         
-    }else if(precio=="" || !(precio.match(numeros)) || precio<0 || precio>100000){
+    }else if(precio=="" || !(precio.match(numeros)) || precio<0 || precio>100000 || precio==0){
         alert("El precio de ingrediente es inválido");
         document.getElementById("precio_menu_new").focus();
         
 
     }else{
-        document.ingredienteform.submit();
+        document.registromenu.submit();
 
     }
 

@@ -24,7 +24,7 @@ public class MUsuario {
     
     }
     
-    public MUsuario verificarUsuario(String correo, String contrasena){
+    public MUsuario verificarUsuario(String correo, String contrasena)throws ClassNotFoundException{
         //objeto de la persona
         MUsuario usuario = null;
         //objeto de conexion
@@ -37,10 +37,8 @@ public class MUsuario {
         try{
             //establecemos la conexion
             con = Conexion.getConection();
-            String q = "select * from musuario "
-                    + "inner join crol "
-                    + "on (musuario.id_rol = crol.id_rol) "
-                    + "where correo=? and contrasena=?";
+            String q = "select * from musuario where correo=? and contrasena=?";
+            ps = con.prepareStatement(q);
             //preparo la sentencia
             ps.setString(1, correo);
             ps.setString(2, contrasena);
@@ -58,10 +56,11 @@ public class MUsuario {
                 break;
             }
         
-        }catch(SQLException sq){
-            System.out.println("Error al verificar el usuario");
-            System.out.println(sq.getMessage());
-        
+        }catch(SQLException e){
+            System.out.println("No conecto con la tabla");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+            usuario = null;
         }finally{
             try{
                 //cerrar conexiones
@@ -69,7 +68,7 @@ public class MUsuario {
                 ps.close();
                 con.close();
             }catch(Exception ex){
-            System.out.println("No se encontro la clase MUsuario");
+
             System.out.println(ex.getMessage());
             }
         }

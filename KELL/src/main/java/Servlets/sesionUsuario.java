@@ -8,6 +8,8 @@ package Servlets;
 import Modelo.MUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,14 +32,11 @@ public class sesionUsuario extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            HttpSession sesionCli = request.getSession();
-            
-            
+
             String correo, contrasena;
             
             correo = request.getParameter("inusername");
@@ -53,12 +52,12 @@ public class sesionUsuario extends HttpServlet {
             if(usuario != null){
                 //si existe en la BD
                 //se crea la sesion de la bd
-                HttpSession sesionusu = request.getSession(true);
-                sesionusu.setAttribute("usuario", usuario);
+                HttpSession sesion = request.getSession(true);
+                sesion.setAttribute("usuario", usuario);
                 
                 //otra sesion que obtendra solo el parametro
-                HttpSession sesionparametro = request.getSession();
-                sesionparametro.setAttribute("usuario", correo);
+                HttpSession sesionUser = request.getSession();
+                sesionUser.setAttribute("usuario", correo);
                 
                 //saber el privilegio switch
                 if(usuario.getId_rol()==1){
@@ -87,7 +86,11 @@ public class sesionUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(sesionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -101,7 +104,11 @@ public class sesionUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(sesionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

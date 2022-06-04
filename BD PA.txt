@@ -1,0 +1,45 @@
+Vistas
+
+Vista ingrediente y unidad
+create view ingredienteMuestra as select id_ingrediente, nombre_ingrediente, precio_ingrediente, cantidad_compra, id_unidadmedida, nombre_unidad from mingrediente natural join cunidadmedida;
+
+Vista ereceta y unidad
+create view erecetaUnidad as select id_ereceta, nombre_receta, cantidad_receta, id_unidadmedida, costo_ereceta, nombre_unidad from ereceta natural join cunidadmedida;
+
+Vista inventario, unidad e ingrediente
+create view inventarioMuestra as select minventario.id_unidadmedida, id_inventario, cantidad_inventario, fecha_inventario, minventario.id_ingrediente, nombre_unidad, nombre_ingrediente from minventario  join cunidadmedida on minventario.id_unidadmedida=cunidadmedida.id_unidadmedida join mingrediente on minventario.id_ingrediente=mingrediente.id_ingrediente;
+
+Trigger registro en MCostoIngrediente
+DELIMITER $$
+ create trigger registroUnitario 
+ after insert on mingrediente
+ for each row
+ begin 
+    
+    if(new.id_unidadmedida=1) then
+    insert into mcostoingrediente (precio_unitario, id_unidadmedida, id_ingrediente) values 
+    ((new.precio_ingrediente)/(1000*new.cantidad_compra),2,new.id_ingrediente);
+    end if;
+    
+    if(new.id_unidadmedida=2) then
+    insert into mcostoingrediente (precio_unitario, id_unidadmedida, id_ingrediente) values 
+    ((new.precio_ingrediente)/(new.cantidad_compra),2,new.id_ingrediente);
+    end if;
+    
+    if(new.id_unidadmedida=3) then
+    insert into mcostoingrediente (precio_unitario, id_unidadmedida, id_ingrediente) values 
+    ((new.precio_ingrediente)/(new.cantidad_compra),3,new.id_ingrediente),((new.precio_ingrediente)/(1000*new.cantidad_compra),4,new.id_ingrediente);
+    end if;
+    
+    if(new.id_unidadmedida=4) then
+    insert into mcostoingrediente (precio_unitario, id_unidadmedida, id_ingrediente) values 
+    ((new.precio_ingrediente)/(new.cantidad_compra),4,new.id_ingrediente);
+    end if;
+    
+    if(new.id_unidadmedida=5) then
+    insert into mcostoingrediente (precio_unitario, id_unidadmedida, id_ingrediente) values 
+    ((new.precio_ingrediente)/(new.cantidad_compra),5,new.id_ingrediente);
+    end if;
+    
+END 
+$$DELIMITER
