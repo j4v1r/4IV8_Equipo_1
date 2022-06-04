@@ -8,8 +8,24 @@
 <%@page import="Modelo.CUnidadMedida"%>
 <%@page import="java.util.List"%>
 <%@page import="Modelo.MIngrediente"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"
-        import="Controlador.AccionesIngrediente"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="Controlador.AccionesIngrediente" session="true"%>
+<%
+String usuario = "";
+//Obtiene la sesión del usuario
+HttpSession sesionuser = request.getSession();
+//Verifica la sesión
+if(sesionuser.getAttribute("usuario") == null){
+%>
+
+<jsp:forward page="registro.jsp" >
+    <jsp:param name="error" value="Es obligatorio autenticarse con una sesion válida" />
+</jsp:forward>
+<%  
+    }else{
+        usuario = (String)sesionuser.getAttribute("usuario");
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -80,7 +96,7 @@
                     <h4>Consultar Perfil</h4>
                 </div>
             </a>
-            <a href="index.html">
+            <a href="cerrarSesion">
                 <div class="option">
                     <i class="fa-solid fa-power-off" title="Salir"></i>
                     <h4>Salir</h4>
@@ -122,7 +138,7 @@
                     <%
                         
                         }
-                        %>
+                    %>
                 </tbody>
               </table>
         

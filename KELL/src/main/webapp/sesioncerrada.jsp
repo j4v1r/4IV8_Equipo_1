@@ -1,0 +1,91 @@
+<%-- 
+    Document   : sesioncerrada
+    Created on : 4/06/2022, 01:20:49 PM
+    Author     : Rogelio Colunga R
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true" %>
+<%
+    HttpSession sesion = request.getSession();
+    sesion.invalidate();
+    
+    HttpSession sesionuser = request.getSession();
+    sesionuser.invalidate();
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/75e8eeea01.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styleSup.css">
+    <script src="/JS/scriptSup.js"></script>
+    <link rel="icon" href="img/logo_kell1.jpg">
+    <title>Inicio</title>
+</head>
+<body>
+
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="btn_1">
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="#" class="e_logo">
+            <img src="../Maquetacion_1/img/logo_kell1.png" alt="" class="logo">
+        </a>
+        <ul>
+            <li><a href="index.html" class="inicial">INICIO</a></li>
+            <li><a href="registro.jsp">REGISTRO</a></li>
+            <li><a href="insesion.jsp">INICIAR SESION</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="container">
+            <h2>¿Quienes somos?</h2>      
+            <p>dotCode, somos una empresa de software que desarrolla soluciones tecnológicas enfocadas 
+                a la problemática específica de cada uno de nuestros clientes, buscando que cada respuesta 
+                sea de calidad y sumamente minimalista, hallando así la belleza de todas las cosas a través de 
+                la tecnología.</p> 
+            <br>
+            <h2>Misión</h2> 
+            <p>Somos una empresa de software que desarrolla  soluciones tecnológicas enfocadas a la  problemática 
+                específica de cada uno de nuestros  clientes, buscando que cada respuesta sea de  calidad y sumamente 
+                minimalista, hallando así la  belleza de todas las cosas a través de la  tecnología.</p>
+            <br>
+            <h2>Visión</h2> 
+            <p>Nuestre empresa busca ser referente del software en México y el mundo por la precisión y sencillez
+                que brindan sus productos al usuario, generando soluciones innovadoras que aporten al cambiante mundo 
+                del software, procurando siempre estar a la vanguardia pero sin dejar a un lado el minimalismo que tanto nos
+                caracteriza, haciendo a la tecnología más amigable con los usuarios. </p>
+            <br>
+                <h2>Políticas generales</h2> 
+            <p>Precio justo: Sabemos que la gente suele limitar  su uso de tecnología a causa del  alto costo que esta puede 
+                 representar, por lo que deseamos  que todos nuestros productos sean  accesibles y a un precio justo por el 
+                  servicio que se ofrece.​</p>
+            <p>Seguridad: Estamos comprometidos a  proteger la data de todos nuestros  usuarios, evitando que agentes 
+                 externos la obtengan, e igualmente  manteniendo privados todos los  datos que nos sean concecidos.​</p>
+            <p>Innovación: La empresa busca siempre  ahondar en nuevos horizontes  tecnológicos que le permita crear 
+                 las soluciones del futuro, hoy.​</p>   
+            <br>
+            <p><b>POWER IN 1  CODE</b> </p>
+            <p>Nuestro slogan busca representar que en la  sencillez de las cosas se encuentra el poder  para cambiar las cosas.</p>
+            <br>     
+            <h3><center> La filosofía de "dotCode" es el  minimalismo, buscando que  nuestro software sea  elegante y funcional.</center></h3>
+            <br>
+        </div>
+    </main>
+
+    <footer class="abajo">
+        <div>
+
+        </div>
+    </footer>
+
+</body>
+</html>

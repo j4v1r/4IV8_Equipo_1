@@ -40,6 +40,10 @@
         <servlet-name>eliminarMArticulo</servlet-name>
         <servlet-class>Servlets.eliminarMArticulo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cerrarSesion</servlet-name>
+        <servlet-class>Servlets.cerrarSesion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarIngrediente</servlet-name>
         <url-pattern>/guardarIngrediente</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>eliminarMArticulo</servlet-name>
         <url-pattern>/eliminarMArticulo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cerrarSesion</servlet-name>
+        <url-pattern>/cerrarSesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

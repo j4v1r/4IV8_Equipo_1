@@ -40,7 +40,7 @@
 
         <div class="options__menu">
 
-            <a href="ingredientes.html" >
+            <a href="ingredientes.jsp" >
                 <div class="option">
                     <i class="fa-solid fa-carrot" title="Ingredientes"></i>
                     <h4>Ingredientes</h4>
