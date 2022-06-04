@@ -131,7 +131,7 @@ if(sesionuser.getAttribute("usuario") == null){
                     <td><%=e.getCantidad_compra()%></td>
                     <td><%=e.getNombre_unidad()%></td>
                     <td>
-                    <a href="#modificar_ingrediente?id_ingrediente=<%=e.getId_ingrediente()%>"<i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                    <a href="ingredientes.jsp?id_ingrediente=<%=e.getId_ingrediente()%>#modificar_ingrediente"<i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                     <a href="eliminarIngrediente?id_ingrediente=<%=e.getId_ingrediente()%>""><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                   </tr>
@@ -225,37 +225,41 @@ if(sesionuser.getAttribute("usuario") == null){
                         </tr>
                         
                         <tr class="espacio"></tr>
-                        <tr>
-                            <td class="fila1">Id: </td>
-                            <td class="fila2"><input type="text" id="idingrediente" value=""></td>
-                        </tr>
+                        <%
+                        //id
+                        int id_ingrediente = Integer.parseInt(request.getParameter("id_ingrediente"));
+                        //empleado
+                        MIngrediente e = AccionesIngrediente.buscarIngredienteID(id_ingrediente);
+                        %>
                         <tr>
                             <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="ingredientenuevo" value=""></td>
+                            <td class="fila2"><input type="text" id="ingredientenuevo" value="<%=e.getNombre_ingrediente()%>"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Precio: </td>
-                            <td class="fila2"><input type="text" id="precionuevo"></td>
+                            <td class="fila2"><input type="text" id="precionuevo" value="<%=e.getPrecio_ingrediente()%>"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Cantidad: </td>
-                            <td class="fila2"><input type="number" id="cantidadnueva"></td>
+                            <td class="fila2"><input type="number" id="cantidadnueva" value="<%=e.getCantidad_compra()%>"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="" id="">
-                                <option value="">Litro (l)</option>
-                                <option value="">Mililitro (ml)</option>
-                                <option value="">Kilogramo (kg)</option>
-                                <option value="">Gramo (gr)</option>
-                                <option value="">Libra (lb)</option>
-                                <option value="">Onza (oz)</option>
-                                <option value="">Porción (pr)</option>
-                                <option value="">Pieza (pz)</option>
+                            <td class="fila2"><select name="" id="" value="<%=e.getNombre_unidad()%>">
 
+                        <% 
+                            List<CUnidadMedida> lista3 = AccionesUnidadMedida.getAllUnidadMedida();
+                            for(CUnidadMedida um2 : lista3){
+                        %>
+                        
+                           <option value="<%=um2.getId_unidadmedida()%>"><%=um2.getNombre_unidad()%></option>
+                           
+                        <%
+                            }
+                        %>
                             </select></td>
                         </tr>
                         <tr class="espacio"></tr>

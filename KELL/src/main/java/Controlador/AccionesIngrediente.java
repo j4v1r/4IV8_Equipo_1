@@ -100,7 +100,7 @@ public class AccionesIngrediente {
             //establecer es la conexion
             Connection con = Conexion.getConection();
             
-            String q = "select * from mingrediente where id_ingrediente=?";
+            String q = "select * from ingredienteMuestra where id_ingrediente=?";
             
             PreparedStatement ps = con.prepareStatement(q);
             
@@ -115,6 +115,7 @@ public class AccionesIngrediente {
                 e.setPrecio_ingrediente(rs.getFloat(3));
                 e.setCantidad_compra(rs.getFloat(4));
                 e.setId_unidadmedida(rs.getInt(5));
+                e.setNombre_unidad(rs.getString(6));
                 
             }
             

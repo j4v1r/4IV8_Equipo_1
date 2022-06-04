@@ -116,4 +116,35 @@ public class AccionesEReceta {
         return estatus;
     }
     
+    
+    //borrar empleado
+    public static int eliminarIngrediente(int id_ingrediente){
+        
+        //Estado de la query, se elimino el ingrediente o no
+        int estatus = 0;
+        
+        try{
+            //Conexión
+            Connection con = Conexion.getConection();
+            
+            String q = "delete from mingrediente where id_ingrediente=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_ingrediente);
+            
+            estatus = ps.executeUpdate();
+            
+            
+            
+            System.out.println("Se elimino el ingrediente");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo elimnar al ingrediente");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
+    
 }

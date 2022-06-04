@@ -114,6 +114,7 @@
                     <td><%=e.getCantidad_receta()%></td>
                     <td><%=e.getNombre_unidad()%></td>
                     <td>
+                        <a href="dreceta.jsp?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-blender" style="font-size: 20px; margin-right: 1rem;"></i></a>
                         <a href="#modificar_receta"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                         <a href="eliminarEReceta?id_ereceta=<%=e.getId_ereceta()%>""><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>

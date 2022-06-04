@@ -4,6 +4,13 @@
     Author     : Rogelio Colunga R
 --%>
 
+<%@page import="Modelo.MIngrediente"%>
+<%@page import="Controlador.AccionesIngrediente"%>
+<%@page import="Controlador.AccionesUnidadMedida"%>
+<%@page import="Modelo.CUnidadMedida"%>
+<%@page import="java.util.List"%>
+<%@page import="Modelo.DReceta"%>
+<%@page import="Controlador.AccionesDReceta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +21,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ingredientes</title>
+        <title>Receta Detalle</title>
         <link rel="stylesheet" href="styleLat.css">
         <script src="https://kit.fontawesome.com/75e8eeea01.js" crossorigin="anonymous"></script>
         <link rel="icon" href="img/logo_kell1.jpg">
@@ -45,13 +52,13 @@
 
         <div class="options__menu">
 
-            <a href="ingredientes.jsp" class="selected">
+            <a href="ingredientes.jsp" class="">
                 <div class="option">
                     <i class="fa-solid fa-carrot" title="Ingredientes"></i>
                     <h4>Ingredientes</h4>
                 </div>
             </a>
-            <a href="recetas.jsp">
+            <a href="recetas.jsp" class="selected">
                 <div class="option">
                     <i class="fa-solid fa-book" title="Recetas"></i>
                     <h4>Recetas</h4>
@@ -85,12 +92,21 @@
         </div>
 
     </div>
-
+    
+    
     <!-- CONTENIDO PRINCIPAL -->
     <main class="main_container">
+        <%
+            //id
+            int id_ereceta = Integer.parseInt(request.getParameter("id_ereceta"));
+            
+            DReceta e = AccionesDReceta.buscarERecetaID(id_ereceta);
+            
+        %>
         
             <table summary="Ingredientes Agregados" class="tabla_consulta">
-                <caption><h2>Ingredientes de Receta</h2></caption>
+    
+                <caption><h2>Ingredientes de <%=e.getId_ereceta()%></h2></caption>
                 <thead class="col_tabla">
                   <tr>
                     <th scope="col">Ingrediente</th>
@@ -99,18 +115,29 @@
                     <th scope="col">Costo</th>
                   </tr>
                 </thead>
+               
                 <tbody>
+                <%
+                    int id_ereceta1 = Integer.parseInt(request.getParameter("id_ereceta"));
+
+                    List<DReceta> listaDR = AccionesDReceta.getAllDReceta(id_ereceta1);
+                            for(DReceta u : listaDR){
+                %>
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><%=u.getId_ingrediente()%></td>
+                    <td><%=u.getId_unidadmedida()%></td>
+                    <td><%=u.getCantidad_ingrediente()%></td>
+                    <td><%=u.getCosto_dreceta()%></td>
                     <td>
                         <a href="#modificar_ingrediente?id_ingrediente="><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                         <a href="eliminarIngrediente?id_ingrediente="><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                   </tr>
+                <%    
+                    }
+                %>
                 </tbody>
+
               </table>
         
         <div class="boton_nuevo_pag">
@@ -122,53 +149,64 @@
 
 
         <!-- MODAL AGREGAR INGREDIENTE -->
+        
         <div id="agregar_ingrediente" class="modal">
             <div class="ventana">
                 <a href="#"  class="cerrar">
                     X
                 </a>
                 <br>
-                <form action="guardarIngrediente" method="post" class="ingredienteregistro" name="ingredienteregistro">
+                <form action="guardarDReceta" method="post" class="ingredienteregistro" name="ingredienteregistro">
+                    
                     <table class="nuevoingrediente">
                         <tr class="insr">
-                            <td colspan="2"><b>Nuevo Ingrediente</b></td>
+                            <td colspan="2"><b>Nuevo Ingrediente de Receta</b></td>
                         </tr>
                         <tr class="insr">
                             <td colspan="2">Introduzca los datos del nuevo ingrediente</td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
-                            <td class="fila1">Nombre: </td>
+                            <td class="fila1">Ingrediente: </td>
                             <td class="fila2">
-                            <select name="nombreingrediente" id="nombreingrediente">
-                        
-                                    <option value="""></option>
-                                </select>
+                            <select name="ingrediente_dreceta" id="ingrediente_dreceta">
+                        <%
+                            List<MIngrediente> lista2 = AccionesIngrediente.getAllIngredientes();
+                            for(MIngrediente mi : lista2){
+                        %>
+                                   
+                            <option value="<%=mi.getId_ingrediente()%>"><%=mi.getNombre_ingrediente()%></option>
+                            
+                        <%
+                            }
+                        %>
+                            </select>
                             </td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="unidadmedidaingrediente" id="unidadmedidaingrediente">
-                        
-                           <option value="""></option>
-                            </select></td>
-                            
+                            <td class="fila2"><select name="um_dreceta" id="um_dreceta">
+                        <% 
+                            List<CUnidadMedida> listaUM = AccionesUnidadMedida.getAllUnidadMedida();
+                            for(CUnidadMedida um : listaUM){
+                        %>
+                           <option value="<%=um.getId_unidadmedida()%>"><%=um.getNombre_unidad()%></option>
+                        <%
+                            }
+                        %>
+                        </select></td> 
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Cantidad: </td>
-                            <td class="fila2"><input type="number" id="cantidadnueva" name="cantidadnueva"></td>
+                            <td class="fila2"><input type="number" id="cantidadnueva_dreceta" name="cantidadnueva_dreceta"></td>
                         </tr>
                         <tr class="espacio1"></tr>
-                        <tr>
-                            <td class="fila1">Precio: </td>
-                            <td class="fila2"><input type="text" id="precionuevo" name="precionuevo"></td>
-                        </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class="fila2"><button onclick="registroingrediente()" type="button"><b>AGREGAR</b></button></td>
+                            <td class="fila2"><button type="submit"><b>AGREGAR</b></button></td>
                         </tr>
                     </table>
                 </form>
@@ -244,6 +282,6 @@
     </main>
 
     <script src="JS/scriptC.js"></script>
-    <script src="JS/validacion.js"></script>
+    <!--<script src="JS/validacion.js"></script>-->
 </body>
 </html>
