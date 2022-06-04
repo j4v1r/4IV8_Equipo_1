@@ -157,7 +157,7 @@
                 </a>
                 <br>
                 <form action="guardarDReceta" method="post" class="ingredienteregistro" name="ingredienteregistro">
-                    
+
                     <table class="nuevoingrediente">
                         <tr class="insr">
                             <td colspan="2"><b>Nuevo Ingrediente de Receta</b></td>

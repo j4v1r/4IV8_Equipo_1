@@ -214,7 +214,7 @@ if(sesionuser.getAttribute("usuario") == null){
                     X
                 </a>
                 <br>
-                <form action="" method="post" class="ingredienteform">
+                <form action="actualizarMIngrediente" method="post" class="ingredienteform" name="actualizaringrediente">
                     <table class="nuevoingrediente">
                         
                         <tr class="insr">
@@ -231,25 +231,28 @@ if(sesionuser.getAttribute("usuario") == null){
                         //empleado
                         MIngrediente e = AccionesIngrediente.buscarIngredienteID(id_ingrediente);
                         %>
+                        <input id="id_ingrediente" name="id_ingrediente" type="hidden"
+                                                     value="<%=e.getId_ingrediente()%>">
+                        <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="ingredientenuevo" value="<%=e.getNombre_ingrediente()%>"></td>
+                            <td class="fila2"><input type="text" id="ingredientecambio" name="ingredientecambio" value="<%=e.getNombre_ingrediente()%>"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Precio: </td>
-                            <td class="fila2"><input type="text" id="precionuevo" value="<%=e.getPrecio_ingrediente()%>"></td>
+                            <td class="fila2"><input type="text" id="precioingredientecambio" name="precioingredientecambio" value="<%=e.getPrecio_ingrediente()%>"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Cantidad: </td>
-                            <td class="fila2"><input type="number" id="cantidadnueva" value="<%=e.getCantidad_compra()%>"></td>
+                            <td class="fila2"><input type="number" id="cantidadingredientecambio" name="cantidadingredientecambio" value="<%=e.getCantidad_compra()%>"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="" id="" value="<%=e.getNombre_unidad()%>">
-
+                            <td class="fila2"><select name="umingredientecambio" id="umingredientecambio" >
+                            <option value="<%=e.getId_unidadmedida()%>"><%=e.getNombre_unidad()%></option>
                         <% 
                             List<CUnidadMedida> lista3 = AccionesUnidadMedida.getAllUnidadMedida();
                             for(CUnidadMedida um2 : lista3){
@@ -265,7 +268,7 @@ if(sesionuser.getAttribute("usuario") == null){
                         <tr class="espacio"></tr>
                         <tr>
                             <td class=""><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class=""><button onclick="location.href='#'" type="button"><b>APLICAR</b></button></td>
+                            <td class=""><button type="submit"><b>APLICAR</b></button></td>
                         </tr>
 
                     </table>

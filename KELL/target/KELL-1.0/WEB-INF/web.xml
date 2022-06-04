@@ -48,6 +48,10 @@
         <servlet-name>guardarDReceta</servlet-name>
         <servlet-class>Servlets.guardarDReceta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>actualizarMIngrediente</servlet-name>
+        <servlet-class>Servlets.actualizarMIngrediente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarIngrediente</servlet-name>
         <url-pattern>/guardarIngrediente</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>guardarDReceta</servlet-name>
         <url-pattern>/guardarDReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizarMIngrediente</servlet-name>
+        <url-pattern>/actualizarMIngrediente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

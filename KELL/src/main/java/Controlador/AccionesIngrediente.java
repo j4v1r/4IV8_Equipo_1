@@ -159,7 +159,40 @@ public class AccionesIngrediente {
         }
         return estatus;
     }
+    
+    //Actualización ingrediente
+    public static int actualizarMIngrediente(MIngrediente e){
         
+        //Estado de la query, se actualizo el ingrediente o no
+        int estatus = 0;
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "update mingrediente set nombre_ingrediente=?, precio_ingrediente=?, cantidad_compra=?, id_unidadmedida=? where id_ingrediente=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setString(1, e.getNombre_ingrediente());
+            ps.setFloat(2, e.getPrecio_ingrediente());
+            ps.setFloat(3, e.getCantidad_compra());
+            ps.setInt(4, e.getId_unidadmedida());
+            ps.setInt(5, e.getId_ingrediente());
+            
+            estatus = ps.executeUpdate();
+            
+            
+            
+            System.out.println("Se actualizo el ingrediente");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo actualizar el ingrediente");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
        
 }
     
