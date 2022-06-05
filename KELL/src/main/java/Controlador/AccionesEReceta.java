@@ -117,34 +117,38 @@ public class AccionesEReceta {
     }
     
     
-    //borrar empleado
-    public static int eliminarIngrediente(int id_ingrediente){
-        
-        //Estado de la query, se elimino el ingrediente o no
-        int estatus = 0;
+    //buscar empleado por id
+    public static EReceta buscarERecetaID(int id_ereceta){
+        //donde se crea el objeto del empleado
+        EReceta e = new EReceta();
         
         try{
-            //Conexión
+            //establecer es la conexion
             Connection con = Conexion.getConection();
             
-            String q = "delete from mingrediente where id_ingrediente=?";
+            String q = "select nombre_receta, id_ereceta from ereceta where id_ereceta=?";
             
             PreparedStatement ps = con.prepareStatement(q);
             
-            ps.setInt(1, id_ingrediente);
+            ps.setInt(1, id_ereceta);
             
-            estatus = ps.executeUpdate();
+            ResultSet rs = ps.executeQuery();
             
+            if(rs.next()){
+         
+                e.setNombre_receta(rs.getString(1));
+                e.setId_ereceta(rs.getInt(2));
+            }
             
-            
-            System.out.println("Se elimino el ingrediente");
+            System.out.println("Se busco el id_ereceta");
             con.close();
             
+            
         }catch(Exception ex){
-            System.out.println("No se pudo elimnar al ingrediente");
+            System.out.println("No se pudo buscar al id_ereceta");
             System.out.println(ex.getMessage());
         }
-        return estatus;
+        return e;
     }
     
 }

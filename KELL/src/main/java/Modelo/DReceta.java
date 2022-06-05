@@ -13,6 +13,7 @@ public class DReceta {
     
     private int id_dreceta, id_ingrediente,id_ereceta, id_unidadmedida;
     private float cantidad_ingrediente, costo_dreceta;
+    private String nombre_ingrediente, nombre_unidad;
     
     public DReceta(){
         
@@ -64,6 +65,22 @@ public class DReceta {
 
     public void setCosto_dreceta(float costo_dreceta) {
         this.costo_dreceta = costo_dreceta;
+    }
+
+    public String getNombre_ingrediente() {
+        return nombre_ingrediente;
+    }
+
+    public void setNombre_ingrediente(String nombre_ingrediente) {
+        this.nombre_ingrediente = nombre_ingrediente;
+    }
+
+    public String getNombre_unidad() {
+        return nombre_unidad;
+    }
+
+    public void setNombre_unidad(String nombre_unidad) {
+        this.nombre_unidad = nombre_unidad;
     }
      
 }

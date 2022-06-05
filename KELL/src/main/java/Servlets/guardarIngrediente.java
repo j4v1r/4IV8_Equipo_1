@@ -57,7 +57,7 @@ public class guardarIngrediente extends HttpServlet {
             int estatus = AccionesIngrediente.registrarIngrediente(e);
             
             if(estatus > 0){
-                response.sendRedirect("ingredientes.jsp");
+                response.sendRedirect("ingredientes.jsp#agregar_ingredient");
             }else{
                 response.sendRedirect("error.jsp");
             }

@@ -8,15 +8,12 @@
 <%@page import="Modelo.CUnidadMedida"%>
 <%@page import="java.util.List"%>
 <%@page import="Modelo.MIngrediente"%>
-<%@page contentType="text/html" pageEncoding="UTF-8" import="Controlador.AccionesIngrediente" session="true"%>
-<%
-String usuario = "";
-//Obtiene la sesión del usuario
-HttpSession sesionuser = request.getSession();
-//Verifica la sesión
-if(sesionuser.getAttribute("usuario") == null){
+<%@page contentType="text/html" pageEncoding="UTF-8"
+        import="Controlador.AccionesIngrediente" session="true"%>
+<%String usuario = "";
+HttpSession sesionuser=request.getSession();
+if(sesionuser.getAttribute("usuario")==null){
 %>
-
 <jsp:forward page="registro.jsp" >
     <jsp:param name="error" value="Es obligatorio autenticarse con una sesion válida" />
 </jsp:forward>
@@ -96,7 +93,7 @@ if(sesionuser.getAttribute("usuario") == null){
                     <h4>Consultar Perfil</h4>
                 </div>
             </a>
-            <a href="cerrarSesion">
+            <a href="index.html">
                 <div class="option">
                     <i class="fa-solid fa-power-off" title="Salir"></i>
                     <h4>Salir</h4>
@@ -131,14 +128,14 @@ if(sesionuser.getAttribute("usuario") == null){
                     <td><%=e.getCantidad_compra()%></td>
                     <td><%=e.getNombre_unidad()%></td>
                     <td>
-                    <a href="ingredientes.jsp?id_ingrediente=<%=e.getId_ingrediente()%>#modificar_ingrediente"<i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                    <a href="eliminarIngrediente?id_ingrediente=<%=e.getId_ingrediente()%>""><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                    <a href="ingredientes.jsp#modificar_ingrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                    <a href="eliminarIngrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                   </tr>
                     <%
                         
                         }
-                    %>
+                        %>
                 </tbody>
               </table>
         
@@ -157,7 +154,7 @@ if(sesionuser.getAttribute("usuario") == null){
                     X
                 </a>
                 <br>
-                <form action="guardarIngrediente" method="post" class="ingredienteregistro" name="ingredienteregistro">
+                <form action="guardarIngrediente" method="post" class="ingredienteform">
                     <table class="nuevoingrediente">
                         <tr class="insr">
                             <td colspan="2"><b>Nuevo Ingrediente</b></td>
@@ -199,7 +196,7 @@ if(sesionuser.getAttribute("usuario") == null){
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class="fila2"><button onclick="registroingrediente()" type="button"><b>AGREGAR</b></button></td>
+                            <td class="fila2"><button type="submit"><b>AGREGAR</b></button></td>
                         </tr>
                     </table>
                 </form>
@@ -207,14 +204,15 @@ if(sesionuser.getAttribute("usuario") == null){
         </div>
 
         <!-- MODAL MODIFICAR INGREDIENTE -->
-
+        
+        
         <div id="modificar_ingrediente" class="modal">
             <div class="ventana">
                 <a href="#"  class="cerrar">
                     X
                 </a>
                 <br>
-                <form action="actualizarMIngrediente" method="post" class="ingredienteform" name="actualizaringrediente">
+                <form action="" method="post" class="ingredienteform">
                     <table class="nuevoingrediente">
                         
                         <tr class="insr">
@@ -225,50 +223,43 @@ if(sesionuser.getAttribute("usuario") == null){
                         </tr>
                         
                         <tr class="espacio"></tr>
-                        <%
-                        //id
-                        int id_ingrediente = Integer.parseInt(request.getParameter("id_ingrediente"));
-                        //empleado
-                        MIngrediente e = AccionesIngrediente.buscarIngredienteID(id_ingrediente);
-                        %>
-                        <input id="id_ingrediente" name="id_ingrediente" type="hidden"
-                                                     value="<%=e.getId_ingrediente()%>">
-                        <tr class="espacio1"></tr>
+                        <tr>
+                            <td class="fila1">Id: </td>
+                            <td class="fila2"><input type="text" id="idingrediente" value=""></td>
+                        </tr>
                         <tr>
                             <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="ingredientecambio" name="ingredientecambio" value="<%=e.getNombre_ingrediente()%>"></td>
+                            <td class="fila2"><input type="text" id="ingredientenuevo" value=""></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Precio: </td>
-                            <td class="fila2"><input type="text" id="precioingredientecambio" name="precioingredientecambio" value="<%=e.getPrecio_ingrediente()%>"></td>
+                            <td class="fila2"><input type="text" id="precionuevo"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Cantidad: </td>
-                            <td class="fila2"><input type="number" id="cantidadingredientecambio" name="cantidadingredientecambio" value="<%=e.getCantidad_compra()%>"></td>
+                            <td class="fila2"><input type="number" id="cantidadnueva"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="umingredientecambio" id="umingredientecambio" >
-                            <option value="<%=e.getId_unidadmedida()%>"><%=e.getNombre_unidad()%></option>
-                        <% 
-                            List<CUnidadMedida> lista3 = AccionesUnidadMedida.getAllUnidadMedida();
-                            for(CUnidadMedida um2 : lista3){
-                        %>
-                        
-                           <option value="<%=um2.getId_unidadmedida()%>"><%=um2.getNombre_unidad()%></option>
-                           
-                        <%
-                            }
-                        %>
+                            <td class="fila2"><select name="" id="">
+                                <option value="">Litro (l)</option>
+                                <option value="">Mililitro (ml)</option>
+                                <option value="">Kilogramo (kg)</option>
+                                <option value="">Gramo (gr)</option>
+                                <option value="">Libra (lb)</option>
+                                <option value="">Onza (oz)</option>
+                                <option value="">Porción (pr)</option>
+                                <option value="">Pieza (pz)</option>
+
                             </select></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <td class=""><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class=""><button type="submit"><b>APLICAR</b></button></td>
+                            <td class=""><button onclick="location.href='#'" type="button"><b>APLICAR</b></button></td>
                         </tr>
 
                     </table>
@@ -282,6 +273,5 @@ if(sesionuser.getAttribute("usuario") == null){
     </main>
 
     <script src="JS/scriptC.js"></script>
-    <script src="JS/validacion.js"></script>
 </body>
 </html>

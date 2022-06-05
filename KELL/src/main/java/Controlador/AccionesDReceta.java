@@ -60,7 +60,7 @@ public class AccionesDReceta {
             //Conexión
             Connection con = Conexion.getConection();
             
-            String q = "select * from dreceta where id_ereceta=?";
+            String q = "select * from muestradreceta where id_ereceta=?";
             
             PreparedStatement ps = con.prepareStatement(q);
             
@@ -77,7 +77,9 @@ public class AccionesDReceta {
                 u.setId_ereceta(rs.getInt(3));
                 u.setId_unidadmedida(rs.getInt(4));
                 u.setCantidad_ingrediente(rs.getFloat(5));
-                u.setCosto_dreceta(rs.getFloat(5));
+                u.setCosto_dreceta(rs.getFloat(6));
+                u.setNombre_ingrediente(rs.getString(7));
+                u.setNombre_unidad(rs.getString(8));
                 lista.add(u);
             }
             
@@ -91,37 +93,5 @@ public class AccionesDReceta {
         return lista;
     }
     
-    //buscar empleado por id
-    public static DReceta buscarERecetaID(int id_ereceta){
-        //donde se crea el objeto del empleado
-        DReceta e = new DReceta();
-        
-        try{
-            //establecer es la conexion
-            Connection con = Conexion.getConection();
-            
-            String q = "select id_ereceta from dreceta where id_ereceta=?";
-            
-            PreparedStatement ps = con.prepareStatement(q);
-            
-            ps.setInt(1, id_ereceta);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs.next()){
-         
-                e.setId_ereceta(rs.getInt(1));
-                
-            }
-            
-            System.out.println("Se busco el ingrediente");
-            con.close();
-            
-            
-        }catch(Exception ex){
-            System.out.println("No se pudo buscar al ingrediente");
-            System.out.println(ex.getMessage());
-        }
-        return e;
-    }
+    
 }

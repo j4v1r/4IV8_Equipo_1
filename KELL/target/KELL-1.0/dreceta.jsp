@@ -4,6 +4,8 @@
     Author     : Rogelio Colunga R
 --%>
 
+<%@page import="Modelo.EReceta"%>
+<%@page import="Controlador.AccionesEReceta"%>
 <%@page import="Modelo.MIngrediente"%>
 <%@page import="Controlador.AccionesIngrediente"%>
 <%@page import="Controlador.AccionesUnidadMedida"%>
@@ -91,8 +93,7 @@
 
         </div>
 
-    </div>
-    
+    </div>        
     
     <!-- CONTENIDO PRINCIPAL -->
     <main class="main_container">
@@ -100,13 +101,15 @@
             //id
             int id_ereceta = Integer.parseInt(request.getParameter("id_ereceta"));
             
-            DReceta e = AccionesDReceta.buscarERecetaID(id_ereceta);
+            EReceta e = AccionesEReceta.buscarERecetaID(id_ereceta);
             
         %>
         
             <table summary="Ingredientes Agregados" class="tabla_consulta">
+                
     
-                <caption><h2>Ingredientes de <%=e.getId_ereceta()%></h2></caption>
+                <caption><h2>Ingredientes de <%=e.getNombre_receta()%></h2></caption>
+                
                 <thead class="col_tabla">
                   <tr>
                     <th scope="col">Ingrediente</th>
@@ -118,14 +121,12 @@
                
                 <tbody>
                 <%
-                    int id_ereceta1 = Integer.parseInt(request.getParameter("id_ereceta"));
-
-                    List<DReceta> listaDR = AccionesDReceta.getAllDReceta(id_ereceta1);
-                            for(DReceta u : listaDR){
+                    List<DReceta> listaDR1 = AccionesDReceta.getAllDReceta(id_ereceta);
+                            for(DReceta u : listaDR1){
                 %>
                   <tr>
-                    <td><%=u.getId_ingrediente()%></td>
-                    <td><%=u.getId_unidadmedida()%></td>
+                    <td><%=u.getNombre_ingrediente()%></td>
+                    <td><%=u.getNombre_unidad()%></td>
                     <td><%=u.getCantidad_ingrediente()%></td>
                     <td><%=u.getCosto_dreceta()%></td>
                     <td>
@@ -166,6 +167,11 @@
                             <td colspan="2">Introduzca los datos del nuevo ingrediente</td>
                         </tr>
                         <tr class="espacio"></tr>
+                            <td> 
+                            
+                                <input type="hidden" 
+                                        value="<%=e.getId_ereceta()%>" name="id_ereceta" >
+                            </td>
                         <tr>
                             <td class="fila1">Ingrediente: </td>
                             <td class="fila2">
@@ -253,7 +259,7 @@
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="" id="">
+                            <td class="fila2"><select name="" id="" >
                                 <option value="">Litro (l)</option>
                                 <option value="">Mililitro (ml)</option>
                                 <option value="">Kilogramo (kg)</option>

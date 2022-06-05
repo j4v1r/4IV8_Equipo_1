@@ -42,7 +42,7 @@ public class guardarDReceta extends HttpServlet {
             int unidad_medida, ingrediente, ereceta;
             
             ingrediente = parseInt(request.getParameter("ingrediente_dreceta"));
-            ereceta = parseInt(request.getParameter("id_ereceta4"));
+            ereceta = parseInt(request.getParameter("id_ereceta"));
             unidad_medida = parseInt(request.getParameter("um_dreceta")); 
             cantidad_ingrediente = parseFloat(request.getParameter("cantidadnueva_dreceta"));
             
@@ -56,10 +56,15 @@ public class guardarDReceta extends HttpServlet {
             
             //ejecuto la querry
             
+            
+            
+            
             int estatus = AccionesDReceta.registrarDReceta(e);
             
             if(estatus > 0){
-                response.sendRedirect("dreceta.jsp");
+                request.setAttribute("id_ereceta", ereceta);
+                request.getRequestDispatcher("dreceta.jsp").forward(request, response);
+                
             }else{
                 response.sendRedirect("error.jsp");
             }

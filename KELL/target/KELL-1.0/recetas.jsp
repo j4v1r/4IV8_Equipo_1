@@ -9,7 +9,23 @@
 <%@page import="Controlador.AccionesUnidadMedida"%>
 <%@page import="Modelo.CUnidadMedida"%>
 <%@page import="java.util.List"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="Controlador.AccionesIngrediente" session="true" %>
+<%
+String usuario = "";
+//Obtiene la sesión del usuario
+HttpSession sesionuser = request.getSession();
+//Verifica la sesión
+if(sesionuser.getAttribute("usuario") == null){
+%>
+
+<jsp:forward page="registro.jsp" >
+    <jsp:param name="error" value="Es obligatorio autenticarse con una sesion válida" />
+</jsp:forward>
+<%  
+    }else{
+        usuario = (String)sesionuser.getAttribute("usuario");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,7 +132,7 @@
                     <td>
                         <a href="dreceta.jsp?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-blender" style="font-size: 20px; margin-right: 1rem;"></i></a>
                         <a href="#modificar_receta"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                        <a href="eliminarEReceta?id_ereceta=<%=e.getId_ereceta()%>""><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        <a href="eliminarEReceta?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                   </tr>
                 <% 
