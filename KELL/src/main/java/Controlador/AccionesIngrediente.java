@@ -130,7 +130,7 @@ public class AccionesIngrediente {
         return e;
     }
     
-    //borrar empleado
+    //Eliminar Ingrediente
     public static int eliminarIngrediente(int id_ingrediente){
         
         //Estado de la query, se elimino el ingrediente o no

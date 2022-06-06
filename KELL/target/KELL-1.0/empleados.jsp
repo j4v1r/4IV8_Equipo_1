@@ -110,7 +110,8 @@
                 <td><%=e.getCorreo()%></td>
                 <td>55<%=e.getTelefono()%></td>
                 <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                    <a> <i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a></td>
+                    <a href="eliminarEmpleado?id_persona=<%=e.getId_persona()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                </td>
               </tr>
               <%
                   }

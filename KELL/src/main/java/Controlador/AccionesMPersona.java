@@ -125,4 +125,34 @@ public class AccionesMPersona {
         return e;
     }
     
+    //Eliminar Empleado
+    public static int eliminarEmpleado(int id_persona){
+        
+        //Estado de la query, se elimino el empleado no
+        int estatus = 0;
+        
+        try{
+            //Conexión
+            Connection con = Conexion.getConection();
+            
+            String q = "delete from mpersona where id_persona=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_persona);
+            
+            estatus = ps.executeUpdate();
+            
+            
+            
+            System.out.println("Se elimino la persona");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo elimnar la persona");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
+    
 }

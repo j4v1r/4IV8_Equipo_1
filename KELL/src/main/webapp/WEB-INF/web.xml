@@ -64,6 +64,10 @@
         <servlet-name>guardarDArticulo</servlet-name>
         <servlet-class>Servlets.guardarDArticulo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarEmpleado</servlet-name>
+        <servlet-class>Servlets.eliminarEmpleado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarIngrediente</servlet-name>
         <url-pattern>/guardarIngrediente</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>guardarDArticulo</servlet-name>
         <url-pattern>/guardarDArticulo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarEmpleado</servlet-name>
+        <url-pattern>/eliminarEmpleado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

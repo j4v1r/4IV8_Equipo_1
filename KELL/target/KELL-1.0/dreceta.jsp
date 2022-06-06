@@ -23,7 +23,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Receta Detalle</title>
+        <title>Ingredientes de Receta</title>
         <link rel="stylesheet" href="styleLat.css">
         <script src="https://kit.fontawesome.com/75e8eeea01.js" crossorigin="anonymous"></script>
         <link rel="icon" href="img/logo_kell1.jpg">
