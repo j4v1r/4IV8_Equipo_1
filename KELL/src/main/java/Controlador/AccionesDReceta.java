@@ -93,5 +93,33 @@ public class AccionesDReceta {
         return lista;
     }
     
+    public static int eliminarDReceta(int id_dreceta){
+        //Estado de la query, se elimino la dreceta o no
+        int estatus = 0;
+        
+        try{
+            //Conexión
+            Connection con = Conexion.getConection();
+            
+            String q = "delete from dreceta where id_dreceta=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_dreceta);
+            
+            estatus = ps.executeUpdate();
+            
+            
+            
+            System.out.println("Se elimino la dreceta");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo elimnar la dreceta");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
+    
     
 }

@@ -5,10 +5,8 @@
  */
 package Servlets;
 
-import Controlador.AccionesDReceta;
-import Controlador.AccionesIngrediente;
-import Modelo.DReceta;
-import Modelo.MIngrediente;
+import Controlador.AccionesDArticulo;
+import Modelo.DArticulo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Float.parseFloat;
@@ -22,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rogelio Colunga R
  */
-public class guardarDReceta extends HttpServlet {
+public class guardarDArticulo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,30 +36,26 @@ public class guardarDReceta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            float cantidad_ingrediente;
-            int unidad_medida, ingrediente, ereceta;
+            int id_articulo, ereceta;
+            float cantidad_articulo;
             
-            ingrediente = parseInt(request.getParameter("ingrediente_dreceta"));
-            ereceta = parseInt(request.getParameter("id_ereceta"));
-            unidad_medida = parseInt(request.getParameter("um_dreceta")); 
-            cantidad_ingrediente = parseFloat(request.getParameter("cantidadnueva_dreceta"));
+            id_articulo = parseInt(request.getParameter("id_articulo"));
+            ereceta = parseInt(request.getParameter("nuevoarticuloereceta"));
+            cantidad_articulo = parseFloat(request.getParameter("cantidadarticulo"));
             
+            DArticulo e = new DArticulo ();
             
-            DReceta e = new DReceta();
-            
-            e.setId_ingrediente(ingrediente);
+            e.setId_articulo(id_articulo);
             e.setId_ereceta(ereceta);
-            e.setId_unidadmedida(unidad_medida);
-            e.setCantidad_ingrediente(cantidad_ingrediente);
+            e.setCantidad_articulo(cantidad_articulo);
             
             //ejecuto la querry
             
-            int estatus = AccionesDReceta.registrarDReceta(e);
+            int estatus = AccionesDArticulo.registrarDArticulo(e);
             
             if(estatus > 0){
-                request.setAttribute("id_ereceta", ereceta);
-                request.getRequestDispatcher("dreceta.jsp").forward(request, response);
-                
+                request.setAttribute("id_articulo", id_articulo);
+                request.getRequestDispatcher("dmenu.jsp").forward(request, response);
             }else{
                 response.sendRedirect("error.jsp");
             }
@@ -69,11 +63,17 @@ public class guardarDReceta extends HttpServlet {
             
         }
     }
-    
-    
-    
-    
-            @Override
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -103,5 +103,4 @@ public class guardarDReceta extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-        
 }

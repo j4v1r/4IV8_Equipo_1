@@ -112,8 +112,9 @@
                     <td><%=e.getCosto_marticulo()%></td>
                     <td><%=e.getGanacia_articulo()%></td>
                     <td>
+                        <a href="dmenu.jsp?id_articulo=<%=e.getId_articulo()%>"><i class="fa-solid fa-blender" style="font-size: 20px; margin-right: 1rem;"></i></a>
                         <a href="#modificar_menu"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                        <a href="eliminarMArticulo?id_articulo=<%=e.getId_articulo()%>""><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        <a href="eliminarMArticulo?id_articulo=<%=e.getId_articulo()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                   </tr>
                 <% 
@@ -123,7 +124,7 @@
               </table>
         
         <div class="boton_nuevo_pag1">
-            <a href="#agregar_menu"><p>Nuevo artículo de menú</p></a>
+            <a href="#agregar_menu"><p>Nuevo Artículo de Menú</p></a>
         </div>
 
 

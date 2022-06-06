@@ -131,7 +131,7 @@
                     <td><%=u.getCosto_dreceta()%></td>
                     <td>
                         <a href="#modificar_ingrediente?id_ingrediente="><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                        <a href="eliminarIngrediente?id_ingrediente="><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        <a href="eliminarDReceta?id_dreceta=<%=u.getId_dreceta()%>?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                   </tr>
                 <%    
@@ -142,7 +142,7 @@
               </table>
         
         <div class="boton_nuevo_pag">
-            <a href="#agregar_ingrediente"><p>Nuevo Ingrediente</p></a>
+            <a href="#agregar_ingrediente"><p>Nuevo Ingrediente de Receta</p></a>
         </div>
 
 
@@ -168,7 +168,6 @@
                         </tr>
                         <tr class="espacio"></tr>
                             <td> 
-                            
                                 <input type="hidden" 
                                         value="<%=e.getId_ereceta()%>" name="id_ereceta" >
                             </td>

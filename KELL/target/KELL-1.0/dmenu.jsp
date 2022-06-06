@@ -1,18 +1,16 @@
 <%-- 
-    Document   : dreceta
-    Created on : 4/06/2022, 12:13:46 PM
+    Document   : dmenu
+    Created on : 5/06/2022, 09:48:14 PM
     Author     : Rogelio Colunga R
 --%>
 
+<%@page import="Modelo.DArticulo"%>
+<%@page import="Controlador.AccionesDArticulo"%>
 <%@page import="Modelo.EReceta"%>
 <%@page import="Controlador.AccionesEReceta"%>
-<%@page import="Modelo.MIngrediente"%>
-<%@page import="Controlador.AccionesIngrediente"%>
-<%@page import="Controlador.AccionesUnidadMedida"%>
-<%@page import="Modelo.CUnidadMedida"%>
 <%@page import="java.util.List"%>
-<%@page import="Modelo.DReceta"%>
-<%@page import="Controlador.AccionesDReceta"%>
+<%@page import="Modelo.MArticulo"%>
+<%@page import="Controlador.AccionesMArticulo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +21,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Receta Detalle</title>
+        <title>Ingredientes</title>
         <link rel="stylesheet" href="styleLat.css">
         <script src="https://kit.fontawesome.com/75e8eeea01.js" crossorigin="anonymous"></script>
         <link rel="icon" href="img/logo_kell1.jpg">
@@ -37,7 +35,7 @@
         <div class="icon__menu">
             <i class="fas fa-bars" id="btn_open"></i>
         </div>
-        <h1>Receta: </h1>
+        <h1>Artículo: </h1>
         <div class="icono_header">
             
         </div>
@@ -60,13 +58,13 @@
                     <h4>Ingredientes</h4>
                 </div>
             </a>
-            <a href="recetas.jsp" class="selected">
+            <a href="recetas.jsp">
                 <div class="option">
                     <i class="fa-solid fa-book" title="Recetas"></i>
                     <h4>Recetas</h4>
                 </div>
             </a>
-            <a href="menu.jsp">
+            <a href="menu.jsp" class="selected">
                 <div class="option">
                     <i class="fa-solid fa-bookmark" title="Menu"></i>
                     <h4>Menú</h4>
@@ -93,56 +91,49 @@
 
         </div>
 
-    </div>        
-    
+    </div>
+
     <!-- CONTENIDO PRINCIPAL -->
     <main class="main_container">
         <%
             //id
-            int id_ereceta = Integer.parseInt(request.getParameter("id_ereceta"));
+            int id_articulo = Integer.parseInt(request.getParameter("id_articulo"));
             
-            EReceta e = AccionesEReceta.buscarERecetaID(id_ereceta);
+            MArticulo e = AccionesMArticulo.buscarMArticuloID(id_articulo);
             
         %>
         
             <table summary="Ingredientes Agregados" class="tabla_consulta">
-                
-    
-                <caption><h2>Ingredientes de <%=e.getNombre_receta()%></h2></caption>
-                
+                <caption><h2>Elementos de <%=e.getNombre_articulo()%></h2></caption>
                 <thead class="col_tabla">
                   <tr>
-                    <th scope="col">Ingrediente</th>
-                    <th scope="col">Unidad de Medida</th>
+                    <th scope="col">Receta</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Costo</th>
                   </tr>
                 </thead>
-               
                 <tbody>
                 <%
-                    List<DReceta> listaDR1 = AccionesDReceta.getAllDReceta(id_ereceta);
-                            for(DReceta u : listaDR1){
+                    List<DArticulo> listaDA = AccionesDArticulo.getAllDArticulo(id_articulo);
+                    for(DArticulo u : listaDA){
                 %>
-                  <tr>
-                    <td><%=u.getNombre_ingrediente()%></td>
-                    <td><%=u.getNombre_unidad()%></td>
-                    <td><%=u.getCantidad_ingrediente()%></td>
-                    <td><%=u.getCosto_dreceta()%></td>
-                    <td>
-                        <a href="#modificar_ingrediente?id_ingrediente="><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                        <a href="eliminarDReceta?id_dreceta=<%=u.getId_dreceta()%>?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
-                    </td>
-                  </tr>
+                    <tr>
+                        <td><%=u.getNombre_receta()%></td>
+                        <td><%=u.getCantidad_articulo()%></td>
+                        <td><%=u.getCosto_darticulo()%></td>
+                        <td>
+                            <a href="#modificar_ingrediente?id_ingrediente="><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                            <a href="eliminarDReceta?id_dreceta>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        </td>
+                    </tr>
                 <%    
                     }
                 %>
                 </tbody>
-
               </table>
         
         <div class="boton_nuevo_pag">
-            <a href="#agregar_ingrediente"><p>Nuevo Ingrediente de Receta</p></a>
+            <a href="#agregar_ingrediente"><p>Nueva Receta de Menú</p></a>
         </div>
 
 
@@ -150,64 +141,45 @@
 
 
         <!-- MODAL AGREGAR INGREDIENTE -->
-        
         <div id="agregar_ingrediente" class="modal">
             <div class="ventana">
                 <a href="#"  class="cerrar">
                     X
                 </a>
                 <br>
-                <form action="guardarDReceta" method="post" class="ingredienteregistro" name="ingredienteregistro">
-
+                <form action="guardarDArticulo" method="post" class="ingredienteregistro" name="ingredienteregistro">
                     <table class="nuevoingrediente">
                         <tr class="insr">
-                            <td colspan="2"><b>Nuevo Ingrediente de Receta</b></td>
+                            <td colspan="2"><b>Nuevo Artículo de Menú</b></td>
                         </tr>
                         <tr class="insr">
-                            <td colspan="2">Introduzca los datos del nuevo ingrediente</td>
+                            <td colspan="2">Introduzca los datos del nuevo artículo</td>
                         </tr>
                         <tr class="espacio"></tr>
-                            <td> 
+                        <td> 
                                 <input type="hidden" 
-                                        value="<%=e.getId_ereceta()%>" name="id_ereceta" >
-                            </td>
+                                        value="<%=e.getId_articulo()%>" name="id_articulo" >
+                        </td>
                         <tr>
-                            <td class="fila1">Ingrediente: </td>
+                            <td class="fila1">Artículo: </td>
                             <td class="fila2">
-                            <select name="ingrediente_dreceta" id="ingrediente_dreceta">
-                        <%
-                            List<MIngrediente> lista2 = AccionesIngrediente.getAllIngredientes();
-                            for(MIngrediente mi : lista2){
-                        %>
-                                   
-                            <option value="<%=mi.getId_ingrediente()%>"><%=mi.getNombre_ingrediente()%></option>
-                            
-                        <%
-                            }
-                        %>
+                            <select name="nuevoarticuloereceta" id="nuevoarticuloereceta">
+                            <% 
+                                List<EReceta> listaER = AccionesEReceta.getAllEReceta();
+                                for(EReceta er : listaER){
+                            %>
+                            <option value="<%=er.getId_ereceta()%>"><%=er.getNombre_receta()%></option>
+                            <%
+                                }
+                            %>
                             </select>
                             </td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
-                            <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="um_dreceta" id="um_dreceta">
-                        <% 
-                            List<CUnidadMedida> listaUM = AccionesUnidadMedida.getAllUnidadMedida();
-                            for(CUnidadMedida um : listaUM){
-                        %>
-                           <option value="<%=um.getId_unidadmedida()%>"><%=um.getNombre_unidad()%></option>
-                        <%
-                            }
-                        %>
-                        </select></td> 
-                        </tr>
-                        <tr class="espacio1"></tr>
-                        <tr>
                             <td class="fila1">Cantidad: </td>
-                            <td class="fila2"><input type="number" id="cantidadnueva_dreceta" name="cantidadnueva_dreceta"></td>
+                            <td class="fila2"><input type="number" id="cantidadarticulo" name="cantidadarticulo"></td>
                         </tr>
-                        <tr class="espacio1"></tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
@@ -258,7 +230,7 @@
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="" id="" >
+                            <td class="fila2"><select name="" id="">
                                 <option value="">Litro (l)</option>
                                 <option value="">Mililitro (ml)</option>
                                 <option value="">Kilogramo (kg)</option>
@@ -287,6 +259,6 @@
     </main>
 
     <script src="JS/scriptC.js"></script>
-    <!--<script src="JS/validacion.js"></script>-->
+    <script src="JS/validacion.js"></script>
 </body>
 </html>

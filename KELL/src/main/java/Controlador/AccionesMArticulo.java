@@ -113,4 +113,38 @@ public class AccionesMArticulo {
         return estatus;
     }
     
+    //Buscar el nombre e id del marticulo
+    public static MArticulo buscarMArticuloID(int id_articulo){
+        //Creación empleado de MArticulo
+        MArticulo e = new MArticulo();
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "select nombre_articulo, id_articulo from marticulo where id_articulo=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_articulo);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+         
+                e.setNombre_articulo(rs.getString(1));
+                e.setId_articulo(rs.getInt(2));
+            }
+            
+            System.out.println("Se busco el id_martiuclo");
+            con.close();
+            
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo buscar al id_marticulo");
+            System.out.println(ex.getMessage());
+        }
+        return e;
+    }
+    
 }

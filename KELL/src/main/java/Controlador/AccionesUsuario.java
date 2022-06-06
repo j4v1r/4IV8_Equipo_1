@@ -16,56 +16,35 @@ import Modelo.MUsuario;
  */
 public class AccionesUsuario {
     
-    public MUsuario verificarUsuario(String correo, String contrasena){
-        //objeto de la persona
-        MUsuario usuario = null;
-        //objeto de conexion
-        Connection con = null;
-        //Preparacion de la sentencia
-        PreparedStatement ps = null;
-        //Consultas
-        ResultSet rs = null;
+    public static int registrarUsuarioEmpleado(MUsuario u){
         
-        try{
-            //establecemos la conexion
-            con = Conexion.getConection();
-            String q = "select * from musuario "
-                    + "inner join crol "
-                    + "on (musuario.id_rol = crol.id_rol) "
-                    + "where correo=? and contrasena=?";
-            //preparo la sentencia
-            ps.setString(1, correo);
-            ps.setString(2, contrasena);
-            //ejecutamos la busqueda
-            rs = ps.executeQuery();
-            //buscamos al usuario
-            while(rs.next()){
-                usuario = new MUsuario();
-                //cprivilegio pri = new cprivilegio();
-                usuario.setCorreo(rs.getString("correo"));
-                usuario.setContrasena(rs.getString("contrasena"));
-                usuario.setId_rol(rs.getInt("id_rol"));
-                usuario.setId_persona(rs.getInt("id_persona"));
-                //pri.setPrivilegio_tipo(rs.getString("privilegio_tipo"));
-                
-                break;
-            }
+        int estatus=0;
         
-        }catch(SQLException sq){
-            System.out.println("Error al verificar el usuario");
-            System.out.println(sq.getMessage());
+        try{ 
+            
+        Connection con = Conexion.getConection();
         
-        }finally{
-            try{
-                //cerrar conexiones
-                rs.close();
-                ps.close();
-                con.close();
-            }catch(Exception ex){
-            System.out.println("No se encontro la clase ");
+        String q = "insert into musuario(correo, contrasena, id_persona, id_rol)"
+                + "values (?,?,last_insert_id(),2)";
+        
+        
+        PreparedStatement ps = con.prepareStatement(q);
+        
+        ps.setString(1, u.getCorreo());
+        ps.setString(2, u.getContrasena());
+        
+        estatus = ps.executeUpdate();
+            
+        System.out.println("Registro Exitoso de Empleados en MUsuario");
+        con.close();
+            
+        }catch(Exception ex){
+            System.out.println("Error al registrar Empleado en MUsuario");
             System.out.println(ex.getMessage());
+            
+        
         }
-        }
-        return usuario;
-   }
+        return estatus;
+    }
+    
 }

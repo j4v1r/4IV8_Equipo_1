@@ -4,6 +4,10 @@
     Author     : Alumno
 --%>
 
+<%@page import="Modelo.MPersona"%>
+<%@page import="Modelo.MPersona"%>
+<%@page import="java.util.List"%>
+<%@page import="Controlador.AccionesMPersona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -91,44 +95,26 @@
                 <th scope="col">Apellido Paterno</th>
                 <th scope="col">Apellido Materno</th>
                 <th scope="col">Correo</th>
+                <th scope="col">Telefono</th>
               </tr>
             </thead>
             <tbody>
+                <%
+                    List<MPersona> listaEmpleados = AccionesMPersona.getAllEmpleados();
+                            for(MPersona e : listaEmpleados){
+                %>
               <tr>
-                <td>Suarez </td>
-                <td>Jimenez</td>
-                <td>Teodoro</td>
-                <td>sjteo@gmail.com</td>
-                <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></td>
+                <td><%=e.getNombre_persona()%></td>
+                <td><%=e.getAppat()%></td>
+                <td><%=e.getApmat()%></td>
+                <td><%=e.getCorreo()%></td>
+                <td>55<%=e.getTelefono()%></td>
+                <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                    <a> <i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a></td>
               </tr>
-              <tr>
-                <td>Ordoñez</td>
-                <td>Matías</td>
-                <td>Pedro</td>
-                <td>ompe@gmail.com</td>
-                <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></td>
-              </tr>
-              <tr>
-                <td>Martínez</td>
-                <td>Nuñez</td>
-                <td>Sofia</td>
-                <td>mnsof@gmail.com</td>
-                <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></td>
-              </tr>
-              <tr>
-                <td>Morales</td>
-                <td>Martinez</td>
-                <td>Maria</td>
-                <td>mmmari@gmail.com</td>
-                <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></td>
-              </tr>
-              <tr>
-                <td>Sanchez</td>
-                <td>Fonseca</td>
-                <td>Mateo</td>
-                <td>sfmat@gmail.com</td>
-                <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></td>
-              </tr>
+              <%
+                  }
+              %>
             </tbody>
           </table>
     
@@ -152,7 +138,7 @@
                     X
                 </a>
                 <br>
-                <form action="" method="post" class="ingredienteform">
+                <form action="guardarEmpleado" method="post" class="ingredienteform">
                     <table class="nuevoingrediente">
                         <tr class="insr">
                             <td colspan="2"><b>Nuevo Empleado</b></td>
@@ -161,34 +147,46 @@
                             <td colspan="2">Introduzca los datos del nuevo Empleado</td>
                         </tr>
                         <tr class="espacio"></tr>
+                        <%
+
+                            MPersona u = AccionesMPersona.buscarRestaurante();
+            
+                        %>  
+                        <td><input type="hidden" value="<%=u.getNombre_restaurante()%>" name="restauranteem"></td>
                         <tr>
                             <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="nombreem"></td>
+                            <td class="fila2"><input type="text" id="nombreem" name="nombreem"></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1">Apellido Paterno: </td>
-                            <td class="fila2"><input type="text" id="appatem"></td>
+                            <td class="fila2"><input type="text" id="appatem" name="appatem"></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1">Apellido Materno: </td>
-                            <td class="fila2"><input type="text" id="apmatem"></td>
+                            <td class="fila2"><input type="text" id="apmatem" name="apmatem"></td>
+                        </tr>
+                        <tr class="espacio"></tr>
+                        <tr>
+                            <td class="fila1">Teléfono: </td>
+                            <td class="fila2"><input type="text" id="telemp" placeholder="55" name="telemp"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Correo: </td>
-                            <td class="fila2"><input type="text" id="correoem"></td>
+                            <td class="fila2"><input type="text" id="correoem" name="correoem"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Contraseña: </td>
-                            <td class="fila2"><input type="number" id="cantidadnueva"></td>
+                            <td class="fila2"><input type="text" id="contrasenaemp" name="contrasenaemp"></td>
                         </tr>
+                        
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class="fila2"><button onclick="location.href='#'" type="button"><b>APLICAR</b></button></td>
+                            <td class="fila2"><button type="submit"><b>APLICAR</b></button></td>
                         </tr>
                     </table>
                 </form>

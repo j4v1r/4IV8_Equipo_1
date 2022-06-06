@@ -5,13 +5,12 @@
  */
 package Servlets;
 
-import Controlador.AccionesDReceta;
-import Controlador.AccionesIngrediente;
-import Modelo.DReceta;
-import Modelo.MIngrediente;
+import Controlador.AccionesMPersona;
+import Controlador.AccionesUsuario;
+import Modelo.MPersona;
+import Modelo.MUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rogelio Colunga R
  */
-public class guardarDReceta extends HttpServlet {
+public class guardarEmpleado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,42 +37,60 @@ public class guardarDReceta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            float cantidad_ingrediente;
-            int unidad_medida, ingrediente, ereceta;
+            String nombre, appat, apmat, restaurante, correo, contrasena;
+            int telefono;
             
-            ingrediente = parseInt(request.getParameter("ingrediente_dreceta"));
-            ereceta = parseInt(request.getParameter("id_ereceta"));
-            unidad_medida = parseInt(request.getParameter("um_dreceta")); 
-            cantidad_ingrediente = parseFloat(request.getParameter("cantidadnueva_dreceta"));
+            nombre = request.getParameter("nombreem");
+            appat = request.getParameter("appatem");
+            apmat = request.getParameter("apmatem");
+            telefono = parseInt(request.getParameter("telemp"));
+            restaurante = request.getParameter("restauranteem");
+            correo = request.getParameter("correoem");
+            contrasena = request.getParameter("contrasenaemp");
             
             
-            DReceta e = new DReceta();
+            MPersona e = new MPersona();
             
-            e.setId_ingrediente(ingrediente);
-            e.setId_ereceta(ereceta);
-            e.setId_unidadmedida(unidad_medida);
-            e.setCantidad_ingrediente(cantidad_ingrediente);
+            e.setNombre_persona(nombre);
+            e.setAppat(appat);
+            e.setApmat(apmat);
+            e.setTelefono(telefono);
+            e.setNombre_restaurante(restaurante);
             
-            //ejecuto la querry
             
-            int estatus = AccionesDReceta.registrarDReceta(e);
+            MUsuario u = new MUsuario();
             
-            if(estatus > 0){
-                request.setAttribute("id_ereceta", ereceta);
-                request.getRequestDispatcher("dreceta.jsp").forward(request, response);
-                
+            u.setCorreo(correo);
+            u.setContrasena(contrasena);
+            
+            int estatusp = AccionesMPersona.registrarPersonaEmpleado(e);
+            
+            
+            if(estatusp>0){
+                int estatusu = AccionesUsuario.registrarUsuarioEmpleado(u);
+                if(estatusu>0){
+                    response.sendRedirect("empleados.jsp");
+                }else{
+                response.sendRedirect("error.jsp");
+                }
+                    
             }else{
                 response.sendRedirect("error.jsp");
             }
-            
-            
+             
         }
     }
-    
-    
-    
-    
-            @Override
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -103,5 +120,4 @@ public class guardarDReceta extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-        
 }
