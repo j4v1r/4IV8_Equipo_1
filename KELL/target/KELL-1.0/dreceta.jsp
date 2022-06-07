@@ -62,7 +62,7 @@ if(sesionuser.getAttribute("usuario")==null){
     <div class="menu__side" id="menu_side">
 
         <div class="name__page">
-            <a href="bienvenida.html"><img src="img/logo_kell1.jpg" class="imagen"></a>
+            <a href="bienvenida.jsp"><img src="img/logo_kell1.jpg" class="imagen"></a>
             <h4>Kell</h4>
         </div>
 
@@ -148,7 +148,7 @@ if(sesionuser.getAttribute("usuario")==null){
                     %>
                     <td>
                         <a href="#modificar_ingrediente?id_ingrediente="><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                        <a href="eliminarDReceta?id_dreceta=<%=u.getId_dreceta()%>?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        <a href="eliminarDReceta?id_dreceta=<%=u.getId_dreceta()%>&id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                     <%
                         }else{

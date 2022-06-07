@@ -60,7 +60,7 @@ if(sesionuser.getAttribute("usuario")==null){
     <div class="menu__side" id="menu_side">
 
         <div class="name__page">
-            <a href="bienvenida.html"><img src="img/logo_kell1.jpg" class="imagen"></a>
+            <a href="bienvenida.jsp"><img src="img/logo_kell1.jpg" class="imagen"></a>
             <h4>Kell</h4>
         </div>
 

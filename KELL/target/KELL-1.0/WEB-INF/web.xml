@@ -68,6 +68,10 @@
         <servlet-name>eliminarEmpleado</servlet-name>
         <servlet-class>Servlets.eliminarEmpleado</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarDArticulo</servlet-name>
+        <servlet-class>Servlets.eliminarDArticulo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarIngrediente</servlet-name>
         <url-pattern>/guardarIngrediente</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>eliminarEmpleado</servlet-name>
         <url-pattern>/eliminarEmpleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarDArticulo</servlet-name>
+        <url-pattern>/eliminarDArticulo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -40,8 +40,7 @@ public class eliminarDReceta extends HttpServlet {
             int estatus = AccionesDReceta.eliminarDReceta(id_dreceta);
             
             if(estatus> 0){
-                request.setAttribute("id_ereceta", ereceta);
-                request.getRequestDispatcher("dreceta.jsp").forward(request, response);
+                response.sendRedirect("dreceta.jsp?id_ereceta="+ereceta);
             }else{
                 response.sendRedirect("error.jsp");
             }

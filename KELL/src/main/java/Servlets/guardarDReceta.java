@@ -6,9 +6,7 @@
 package Servlets;
 
 import Controlador.AccionesDReceta;
-import Controlador.AccionesIngrediente;
 import Modelo.DReceta;
-import Modelo.MIngrediente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Float.parseFloat;
@@ -59,9 +57,7 @@ public class guardarDReceta extends HttpServlet {
             int estatus = AccionesDReceta.registrarDReceta(e);
             
             if(estatus > 0){
-                request.setAttribute("id_ereceta", ereceta);
-                request.getRequestDispatcher("dreceta.jsp").forward(request, response);
-                
+               response.sendRedirect("dreceta.jsp?id_ereceta="+ereceta);
             }else{
                 response.sendRedirect("error.jsp");
             }

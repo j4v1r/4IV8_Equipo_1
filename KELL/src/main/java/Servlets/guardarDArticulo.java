@@ -54,8 +54,7 @@ public class guardarDArticulo extends HttpServlet {
             int estatus = AccionesDArticulo.registrarDArticulo(e);
             
             if(estatus > 0){
-                request.setAttribute("id_articulo", id_articulo);
-                request.getRequestDispatcher("dmenu.jsp").forward(request, response);
+                response.sendRedirect("dmenu.jsp?id_articulo="+id_articulo);
             }else{
                 response.sendRedirect("error.jsp");
             }

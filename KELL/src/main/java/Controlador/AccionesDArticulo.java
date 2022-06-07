@@ -91,4 +91,33 @@ public class AccionesDArticulo {
         }
         return lista;
     }
+    
+    public static int eliminarDArticulo(int id_darticulo){
+        //Estado de la query, se elimino el darticulo o no
+        int estatus = 0;
+        
+        try{
+            //Conexión
+            Connection con = Conexion.getConection();
+            
+            String q = "delete from darticulo where id_darticulo=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_darticulo);
+            
+            estatus = ps.executeUpdate();
+            
+            
+            
+            System.out.println("Se elimino la darticulo");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo elimnar la darticulo");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
+    
 }
