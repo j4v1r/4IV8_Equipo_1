@@ -17,8 +17,8 @@ import java.sql.SQLException;
  */
 public class MUsuario {
     
-    private String correo, contrasena;
-    private int id_persona, id_rol;
+    private String correo, contrasena, nombre_persona, appat, apmat, nombre_restaurante, tipo_rol;
+    private int id_persona, id_rol, telefono;
     
     public void MUsuario(){
     
@@ -37,7 +37,7 @@ public class MUsuario {
         try{
             //establecemos la conexion
             con = Conexion.getConection();
-            String q = "select * from musuario where correo=? and contrasena=?";
+            String q = "select * from personamuestra where correo=? and contrasena=?";
             ps = con.prepareStatement(q);
             //preparo la sentencia
             ps.setString(1, correo);
@@ -105,6 +105,54 @@ public class MUsuario {
 
     public void setId_rol(int id_rol) {
         this.id_rol = id_rol;
+    }
+
+    public String getNombre_persona() {
+        return nombre_persona;
+    }
+
+    public void setNombre_persona(String nombre_persona) {
+        this.nombre_persona = nombre_persona;
+    }
+
+    public String getAppat() {
+        return appat;
+    }
+
+    public void setAppat(String appat) {
+        this.appat = appat;
+    }
+
+    public String getApmat() {
+        return apmat;
+    }
+
+    public void setApmat(String apmat) {
+        this.apmat = apmat;
+    }
+
+    public String getNombre_restaurante() {
+        return nombre_restaurante;
+    }
+
+    public void setNombre_restaurante(String nombre_restaurante) {
+        this.nombre_restaurante = nombre_restaurante;
+    }
+
+    public String getTipo_rol() {
+        return tipo_rol;
+    }
+
+    public void setTipo_rol(String tipo_rol) {
+        this.tipo_rol = tipo_rol;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
     
      

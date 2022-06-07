@@ -8,7 +8,21 @@
 <%@page import="Modelo.MPersona"%>
 <%@page import="java.util.List"%>
 <%@page import="Controlador.AccionesMPersona"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
+<%String usuario;
+int rol;
+HttpSession sesionuser=request.getSession();
+HttpSession sesionrol=request.getSession();
+if(sesionuser.getAttribute("usuario")==null){
+%>
+<jsp:forward page="registro.jsp" >
+    <jsp:param name="error" value="Es obligatorio autenticarse con una sesion válida" />
+</jsp:forward>
+<%  
+    }else{
+    usuario = (String)sesionuser.getAttribute("usuario");
+    rol = (int)sesionrol.getAttribute("rol");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -74,7 +88,7 @@
                     <h4>Consultar Perfil</h4>
                 </div>
             </a>
-            <a href="index.html">
+            <a href="cerrarSesion">
                 <div class="option">
                     <i class="fa-solid fa-power-off" title="Salir"></i>
                     <h4>Salir</h4>
@@ -109,6 +123,7 @@
                 <td><%=e.getApmat()%></td>
                 <td><%=e.getCorreo()%></td>
                 <td>55<%=e.getTelefono()%></td>
+                
                 <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                     <a href="eliminarEmpleado?id_persona=<%=e.getId_persona()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                 </td>
@@ -257,3 +272,6 @@
     <script src="JS/scriptC.js"></script>
 </body>
 </html>
+<%
+    }
+%>

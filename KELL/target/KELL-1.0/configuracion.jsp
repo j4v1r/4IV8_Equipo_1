@@ -4,7 +4,21 @@
     Author     : Alumno
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
+<%String usuario;
+int rol;
+HttpSession sesionuser=request.getSession();
+HttpSession sesionrol=request.getSession();
+if(sesionuser.getAttribute("usuario")==null){
+%>
+<jsp:forward page="registro.jsp" >
+    <jsp:param name="error" value="Es obligatorio autenticarse con una sesion válida" />
+</jsp:forward>
+<%  
+    }else{
+    usuario = (String)sesionuser.getAttribute("usuario");
+    rol = (int)sesionrol.getAttribute("rol");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +85,7 @@
                     <h4>Consultar Perfil</h4>
                 </div>
             </a>
-            <a href="index.html">
+            <a href="cerrarSesion">
                 <div class="option">
                     <i class="fa-solid fa-power-off" title="Salir"></i>
                     <h4>Salir</h4>
@@ -93,7 +107,7 @@
                 <th scope="col">Apellido Paterno</th>
                 <th scope="col">Apellido Materno</th>
                 <th scope="col">Correo electrónico</th>
-                <th scope="col">Nombre de la empresa</nav></th>
+                <th scope="col">Nombre de la empresa</th>
                 <th scope="col">País</th>
                 <th scope="col">Teléfono</th>
               </tr>
@@ -111,10 +125,18 @@
               </tr>
             </tbody>
           </table>
-    
+         
+         
+    <%
+        if(rol==1){
+    %>
     <div class="boton_nuevo_pag" id="btnreceta">
         <a href="empleados.jsp"><p>Administrar Empleado</p></a>
     </div>
+    <%
+        }else{
+    %>
+    <%  }   %>
 
     <!-- MODALS WIIIII -->
 
@@ -197,3 +219,6 @@
     <script src="JS/scriptC.js"></script>
 </body>
 </html>
+<%
+    }
+%>

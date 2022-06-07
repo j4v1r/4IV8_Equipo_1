@@ -13,7 +13,21 @@
 <%@page import="java.util.List"%>
 <%@page import="Modelo.DReceta"%>
 <%@page import="Controlador.AccionesDReceta"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
+<%String usuario;
+int rol;
+HttpSession sesionuser=request.getSession();
+HttpSession sesionrol=request.getSession();
+if(sesionuser.getAttribute("usuario")==null){
+%>
+<jsp:forward page="registro.jsp" >
+    <jsp:param name="error" value="Es obligatorio autenticarse con una sesion válida" />
+</jsp:forward>
+<%  
+    }else{
+    usuario = (String)sesionuser.getAttribute("usuario");
+    rol = (int)sesionrol.getAttribute("rol");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -84,7 +98,7 @@
                     <h4>Consultar Perfil</h4>
                 </div>
             </a>
-            <a href="index.html">
+            <a href="cerrarSesion">
                 <div class="option">
                     <i class="fa-solid fa-power-off" title="Salir"></i>
                     <h4>Salir</h4>
@@ -129,22 +143,34 @@
                     <td><%=u.getNombre_unidad()%></td>
                     <td><%=u.getCantidad_ingrediente()%></td>
                     <td><%=u.getCosto_dreceta()%></td>
+                    <%
+                        if(rol==2){
+                    %>
                     <td>
                         <a href="#modificar_ingrediente?id_ingrediente="><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                         <a href="eliminarDReceta?id_dreceta=<%=u.getId_dreceta()%>?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
+                    <%
+                        }else{
+                    %>
+                    <%  }   %>
                   </tr>
                 <%    
                     }
                 %>
                 </tbody>
-
               </table>
         
+        <%
+            if(rol==2){
+        %>
         <div class="boton_nuevo_pag">
             <a href="#agregar_ingrediente"><p>Nuevo Ingrediente de Receta</p></a>
         </div>
-
+        <%
+            }else{
+        %>
+        <%  }   %>
 
         <!-- MODALS WIIIII -->
 
@@ -290,3 +316,6 @@
     <!--<script src="JS/validacion.js"></script>-->
 </body>
 </html>
+<%
+    }
+%>

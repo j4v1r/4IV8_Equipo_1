@@ -59,6 +59,10 @@ public class sesionUsuario extends HttpServlet {
                 HttpSession sesionUser = request.getSession();
                 sesionUser.setAttribute("usuario", correo);
                 
+                HttpSession sesionRol = request.getSession();
+                sesionRol.setAttribute("rol", usuario.getId_rol());
+                
+                
                 //saber el privilegio switch
                 if(usuario.getId_rol()==1){
                     response.sendRedirect("empleados.jsp");

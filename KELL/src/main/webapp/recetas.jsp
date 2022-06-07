@@ -9,22 +9,20 @@
 <%@page import="Controlador.AccionesUnidadMedida"%>
 <%@page import="Modelo.CUnidadMedida"%>
 <%@page import="java.util.List"%>
-<%@page contentType="text/html" pageEncoding="UTF-8" import="Controlador.AccionesIngrediente" session="true" %>
-<%
-String usuario = "";
-//Obtiene la sesión del usuario
-HttpSession sesionuser = request.getSession();
-//Verifica la sesión
-if(sesionuser.getAttribute("usuario") == null){
+<%@page contentType="text/html" pageEncoding="UTF-8" import="Controlador.AccionesIngrediente" session="true"%>
+<%String usuario;
+int rol;
+HttpSession sesionuser=request.getSession();
+HttpSession sesionrol=request.getSession();
+if(sesionuser.getAttribute("usuario")==null){
 %>
-
 <jsp:forward page="registro.jsp" >
     <jsp:param name="error" value="Es obligatorio autenticarse con una sesion válida" />
 </jsp:forward>
 <%  
     }else{
-        usuario = (String)sesionuser.getAttribute("usuario");
-    }
+    usuario = (String)sesionuser.getAttribute("usuario");
+    rol = (int)sesionrol.getAttribute("rol");
 %>
 <!DOCTYPE html>
 <html>
@@ -95,7 +93,7 @@ if(sesionuser.getAttribute("usuario") == null){
                     <h4>Consultar Perfil</h4>
                 </div>
             </a>
-            <a href="index.html">
+            <a href="cerrarSesion">
                 <div class="option">
                     <i class="fa-solid fa-power-off" title="Salir"></i>
                     <h4>Salir</h4>
@@ -131,8 +129,15 @@ if(sesionuser.getAttribute("usuario") == null){
                     <td><%=e.getNombre_unidad()%></td>
                     <td>
                         <a href="dreceta.jsp?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-blender" style="font-size: 20px; margin-right: 1rem;"></i></a>
+                        <%
+                            if(rol==2){
+                        %>
                         <a href="#modificar_receta"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                         <a href="eliminarEReceta?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        <%
+                            }else{
+                        %>
+                        <%  }   %>
                     </td>
                   </tr>
                 <% 
@@ -141,9 +146,16 @@ if(sesionuser.getAttribute("usuario") == null){
                 </tbody>
               </table>
         
+        <%
+            if(rol==2){
+        %>
         <div class="boton_nuevo_pag" id="btnreceta">
             <a href="#agregar_receta"><p>Nueva Receta</p></a>
         </div>
+        <%
+            }else{
+        %>
+        <%  }   %>
 
 
 
@@ -451,3 +463,6 @@ if(sesionuser.getAttribute("usuario") == null){
     
 </body>
 </html>
+<%
+    }
+%>

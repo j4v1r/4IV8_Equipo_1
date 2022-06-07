@@ -4,14 +4,17 @@
     Author     : Alumno
 --%>
 
+<%@page import="Modelo.MUsuario"%>
 <%@page import="Controlador.AccionesUnidadMedida"%>
 <%@page import="Modelo.CUnidadMedida"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>   
 <%@page import="Modelo.MIngrediente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"
         import="Controlador.AccionesIngrediente" session="true"%>
-<%String usuario = "";
+<%String usuario;
+int rol;
 HttpSession sesionuser=request.getSession();
+HttpSession sesionrol=request.getSession();
 if(sesionuser.getAttribute("usuario")==null){
 %>
 <jsp:forward page="registro.jsp" >
@@ -19,9 +22,10 @@ if(sesionuser.getAttribute("usuario")==null){
 </jsp:forward>
 <%  
     }else{
-        usuario = (String)sesionuser.getAttribute("usuario");
-    }
+    usuario = (String)sesionuser.getAttribute("usuario");
+    rol = (int)sesionrol.getAttribute("rol");
 %>
+
 
 <!DOCTYPE html>
 <html>
@@ -46,7 +50,7 @@ if(sesionuser.getAttribute("usuario")==null){
         <div class="icon__menu">
             <i class="fas fa-bars" id="btn_open"></i>
         </div>
-        <h1>Ingredientes</h1>
+        <h1>Ingredientes<%=usuario%></h1>
         <div class="icono_header">
             <i class="fa-solid fa-carrot" title="Ingredientes" style="color:white" id="icono_header"></i>
         </div>
@@ -93,7 +97,7 @@ if(sesionuser.getAttribute("usuario")==null){
                     <h4>Consultar Perfil</h4>
                 </div>
             </a>
-            <a href="index.html">
+            <a href="cerrarSesion">
                 <div class="option">
                     <i class="fa-solid fa-power-off" title="Salir"></i>
                     <h4>Salir</h4>
@@ -127,21 +131,33 @@ if(sesionuser.getAttribute("usuario")==null){
                     <td><%=e.getPrecio_ingrediente()%></td>
                     <td><%=e.getCantidad_compra()%></td>
                     <td><%=e.getNombre_unidad()%></td>
+                    <%
+                        if(rol==2){
+                    %>
                     <td>
-                    <a href="ingredientes.jsp#modificar_ingrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                    <a href="eliminarIngrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                        <a href="ingredientes.jsp#modificar_ingrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                        <a href="eliminarIngrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
+                    <%
+                        }else{
+                    %>
+                    <%  }   %>
                   </tr>
                     <%
-                        
                         }
-                        %>
+                    %>
                 </tbody>
               </table>
-        
+        <%
+            if(rol==2){
+        %>
         <div class="boton_nuevo_pag">
             <a href="#agregar_ingrediente"><p>Nuevo Ingrediente</p></a>
         </div>
+        <%
+            }else{
+        %>
+        <%}%>
 
 
         <!-- MODALS WIIIII -->
@@ -208,7 +224,7 @@ if(sesionuser.getAttribute("usuario")==null){
         
         <div id="modificar_ingrediente" class="modal">
             <div class="ventana">
-                <a href="#"  class="cerrar">
+                <a href="ingredientes.jsp"  class="cerrar">
                     X
                 </a>
                 <br>
@@ -275,3 +291,6 @@ if(sesionuser.getAttribute("usuario")==null){
     <script src="JS/scriptC.js"></script>
 </body>
 </html>
+<%
+    }
+%>
