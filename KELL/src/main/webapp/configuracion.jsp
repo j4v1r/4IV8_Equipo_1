@@ -4,6 +4,7 @@
     Author     : Alumno
 --%>
 
+<%@page import="Modelo.MUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 <%String usuario;
 int rol;
@@ -98,6 +99,13 @@ if(sesionuser.getAttribute("usuario")==null){
 
      <!-- CONTENIDO PRINCIPAL -->
      <main class="main_container">
+          <%
+            //id
+            String correo = usuario;
+            
+            MUsuario e = MUsuario.buscarUsuarioID(correo);
+            
+        %>
         
         <table summary="Ingredientes Agregados" class="tabla_consulta">
             <caption><h2>Configuración del Perfil</h2></caption>
@@ -106,22 +114,22 @@ if(sesionuser.getAttribute("usuario")==null){
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido Paterno</th>
                 <th scope="col">Apellido Materno</th>
-                <th scope="col">Correo electrónico</th>
-                <th scope="col">Nombre de la empresa</th>
-                <th scope="col">País</th>
+                <th scope="col">Email</th>
+                <th scope="col">Restaurante</th>
                 <th scope="col">Teléfono</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Pedro</td>
-                <td>Ordoñez</td>
-                <td>Matías</td>
-                <td>ompe@gmail.com</td>
-                <td>IKEA</td>
-                <td>México</td>
-                <td>551091506</td>
-                <td><a href="#modificar_adminis"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></td>
+                <td><%=e.getNombre_persona()%></td>
+                <td><%=e.getAppat()%></td>
+                <td><%=e.getApmat()%></td>
+                <td><%=e.getCorreo()%></td>
+                <td><%=e.getNombre_restaurante()%></td>
+                <td><%=e.getTelefono()%></td>
+                <td>
+                    <a href="#modificar_adminis"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                </td>
               </tr>
             </tbody>
           </table>

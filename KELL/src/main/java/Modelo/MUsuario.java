@@ -79,7 +79,50 @@ public class MUsuario {
             }
         }
         return usuario;
-   }
+    }
+    
+    public static MUsuario buscarUsuarioID(String correo){
+        //donde se crea el objeto del empleado
+        MUsuario e = new MUsuario();
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "select * from personamuestra where correo=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setString(1, correo);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                
+                e.setId_persona(rs.getInt(1));
+                e.setNombre_persona(rs.getString(2));
+                e.setAppat(rs.getString(3));
+                e.setApmat(rs.getString(4));
+                e.setTelefono(rs.getInt(5));
+                e.setNombre_restaurante(rs.getString(6));
+                e.setCorreo(rs.getString(7));
+                e.setContrasena(rs.getString(8));
+                e.setId_rol(rs.getInt(9));
+                e.setTipo_rol(rs.getString(10));
+                
+            }
+            
+            System.out.println("Se busco el usuario");
+            con.close();
+            
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo buscar al usuario");
+            System.out.println(ex.getMessage());
+        }
+        return e;
+    }
+    
 
     public String getCorreo() {
         return correo;

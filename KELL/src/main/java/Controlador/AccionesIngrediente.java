@@ -91,9 +91,9 @@ public class AccionesIngrediente {
         return lista;
     }
     
-    //buscar empleado por id
+    //Buscar ingrediente por id
     public static MIngrediente buscarIngredienteID(int id_ingrediente){
-        //donde se crea el objeto del empleado
+        //donde se crea el objeto del ingrediente
         MIngrediente e = new MIngrediente();
         
         try{
