@@ -50,7 +50,7 @@ if(sesionuser.getAttribute("usuario")==null){
         <div class="icon__menu">
             <i class="fas fa-bars" id="btn_open"></i>
         </div>
-        <h1>Ingredientes<%=usuario%></h1>
+        <h1>Ingredientes</h1>
         <div class="icono_header">
             <i class="fa-solid fa-carrot" title="Ingredientes" style="color:white" id="icono_header"></i>
         </div>

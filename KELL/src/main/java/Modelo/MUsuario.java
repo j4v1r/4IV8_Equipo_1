@@ -47,11 +47,17 @@ public class MUsuario {
             //Se busca el usuario
             while(rs.next()){
                 usuario = new MUsuario();
-                //cprivilegio pri = new cprivilegio();
+                usuario.setId_persona(rs.getInt("id_persona"));
+                usuario.setNombre_persona(rs.getString("nombre_persona"));
+                usuario.setAppat(rs.getString("appat"));
+                usuario.setApmat(rs.getString("apmat"));
+                usuario.setTelefono(rs.getInt("telefono"));
+                usuario.setNombre_restaurante(rs.getString("nombre_restaurante"));
                 usuario.setCorreo(rs.getString("correo"));
                 usuario.setContrasena(rs.getString("contrasena"));
                 usuario.setId_rol(rs.getInt("id_rol"));
-                usuario.setId_persona(rs.getInt("id_persona"));
+                usuario.setTipo_rol(rs.getString("tipo_rol"));
+                
                 
                 break;
             }

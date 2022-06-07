@@ -4,7 +4,23 @@
     Author     : Rogelio Colunga R
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
+<%String usuario, nombre;
+int rol;
+HttpSession sesionuser=request.getSession();
+HttpSession sesionrol=request.getSession();
+HttpSession sesionnombre=request.getSession();
+if(sesionuser.getAttribute("usuario")==null){
+%>
+<jsp:forward page="registro.jsp" >
+    <jsp:param name="error" value="Es obligatorio autenticarse con una sesion válida" />
+</jsp:forward>
+<%  
+    }else{
+    usuario = (String)sesionuser.getAttribute("usuario");
+    rol = (int)sesionrol.getAttribute("rol");
+    nombre = (String)sesionnombre.getAttribute("nombre");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +99,17 @@
     <main class="main_container">
         <div class="container_texto">
             <div class="text">
-                <p>¡Bienvenido administrador! <br><br> es un software de asistente virtual el cual esta enfocado para la gestión de
+                <p>¡Bienvenido/a 
+                <%
+                    if(rol==2){ 
+                %>
+                chef,
+                <%
+                    }else{
+                %>
+                administrador,
+                <%  }   %>
+                <%=nombre%>!<br><br>Kell es un software de asistente virtual el cual esta enfocado para la gestión de
                 inventarios de productos en restautantes de comida corrida, esto para mejorar y/u optimizar el costeo de alimentos,
                 también se busca el mejor manejo de inventario de insumos y a su vez la gestión de productos los cuales se presentan en el menú.
                 </p>
@@ -94,4 +120,7 @@
     <script src="JS/scriptC.js"></script>
 </body>
 </html>
+<%
+    }
+%>
 
