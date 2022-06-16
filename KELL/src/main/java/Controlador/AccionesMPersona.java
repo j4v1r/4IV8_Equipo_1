@@ -26,7 +26,7 @@ public class AccionesMPersona {
             //Conexión
             Connection con = Conexion.getConection();
             
-            String q = "select * from empleadosmuestra";
+            String q = "select * from personamuestra where id_rol=2";
             
             PreparedStatement ps = con.prepareStatement(q);
             
@@ -36,16 +36,16 @@ public class AccionesMPersona {
             while(rs.next()){
                 //Se crea objeto del ingrediente
                 MPersona e = new MPersona();
-                e.setId_persona(rs.getInt(1));
+                
+                e.setCorreo(rs.getString(1));
                 e.setNombre_persona(rs.getString(2));
                 e.setAppat(rs.getString(3));
                 e.setApmat(rs.getString(4));
                 e.setTelefono(rs.getInt(5));
                 e.setNombre_restaurante(rs.getString(6));
-                e.setCorreo(rs.getString(7));
-                e.setContrasena(rs.getString(8));
-                e.setId_rol(rs.getInt(9));
-                e.setTipo_rol(rs.getString(10));
+                e.setContrasena(rs.getString(7));
+                e.setId_rol(rs.getInt(8));
+                e.setTipo_rol(rs.getString(9));
                 
                 lista.add(e);
             }
@@ -69,17 +69,19 @@ public class AccionesMPersona {
         Connection con = Conexion.getConection();
         
         String q = "insert into mpersona"
-                + "(nombre_persona, appat, apmat, telefono, nombre_restaurante)"
-                + "values (?,?,?,?,?)";
+                + "(correo, nombre_persona, appat, apmat, telefono, nombre_restaurante, contrasena, id_rol)"
+                + "values (?,?,?,?,?,?,?,2)";
         
         
         PreparedStatement ps = con.prepareStatement(q);
         
-        ps.setString(1, e.getNombre_persona());
-        ps.setString(2, e.getAppat());
-        ps.setString(3, e.getApmat());
-        ps.setInt(4, e.getTelefono());
-        ps.setString(5, e.getNombre_restaurante());
+        ps.setString(1, e.getCorreo());
+        ps.setString(2, e.getNombre_persona());
+        ps.setString(3, e.getAppat());
+        ps.setString(4, e.getApmat());
+        ps.setInt(5, e.getTelefono());
+        ps.setString(6, e.getNombre_restaurante());
+        ps.setString(7, e.getContrasena());
         
         estatus = ps.executeUpdate();
             
@@ -95,38 +97,8 @@ public class AccionesMPersona {
         return estatus;
     }
     
-    public static MPersona buscarRestaurante(){
-        //donde se crea el objeto del empleado
-        MPersona e = new MPersona();
-        
-        try{
-            //establecer es la conexion
-            Connection con = Conexion.getConection();
-            
-            String q = "select nombre_restaurante from mpersona";
-            
-            PreparedStatement ps = con.prepareStatement(q);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs.next()){
-         
-                e.setNombre_restaurante(rs.getString(1));
-            }
-            
-            System.out.println("Se busco el id_ereceta");
-            con.close();
-            
-            
-        }catch(Exception ex){
-            System.out.println("No se pudo buscar al id_ereceta");
-            System.out.println(ex.getMessage());
-        }
-        return e;
-    }
-    
     //Eliminar Empleado
-    public static int eliminarEmpleado(int id_persona){
+    public static int eliminarEmpleado(String correo){
         
         //Estado de la query, se elimino el empleado no
         int estatus = 0;
@@ -135,11 +107,11 @@ public class AccionesMPersona {
             //Conexión
             Connection con = Conexion.getConection();
             
-            String q = "delete from mpersona where id_persona=?";
+            String q = "delete from mpersona where correo=?";
             
             PreparedStatement ps = con.prepareStatement(q);
             
-            ps.setInt(1, id_persona);
+            ps.setString(1, correo);
             
             estatus = ps.executeUpdate();
             

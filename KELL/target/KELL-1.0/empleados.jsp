@@ -9,10 +9,11 @@
 <%@page import="java.util.List"%>
 <%@page import="Controlador.AccionesMPersona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
-<%String usuario;
+<%String usuario, restaurante;
 int rol;
 HttpSession sesionuser=request.getSession();
 HttpSession sesionrol=request.getSession();
+HttpSession sesionrestaurante=request.getSession();
 if(sesionuser.getAttribute("usuario")==null){
 %>
 <jsp:forward page="registro.jsp" >
@@ -22,6 +23,7 @@ if(sesionuser.getAttribute("usuario")==null){
     }else{
     usuario = (String)sesionuser.getAttribute("usuario");
     rol = (int)sesionrol.getAttribute("rol");
+    restaurante = (String)sesionrestaurante.getAttribute("restaurante");
 %>
 <!DOCTYPE html>
 <html>
@@ -125,7 +127,7 @@ if(sesionuser.getAttribute("usuario")==null){
                 <td>55<%=e.getTelefono()%></td>
                 
                 <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
-                    <a href="eliminarEmpleado?id_persona=<%=e.getId_persona()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
+                    <a href="eliminarEmpleado?correo=<%=e.getCorreo()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                 </td>
               </tr>
               <%
@@ -163,12 +165,7 @@ if(sesionuser.getAttribute("usuario")==null){
                             <td colspan="2">Introduzca los datos del nuevo Empleado</td>
                         </tr>
                         <tr class="espacio"></tr>
-                        <%
-
-                            MPersona u = AccionesMPersona.buscarRestaurante();
-            
-                        %>  
-                        <td><input type="hidden" value="<%=u.getNombre_restaurante()%>" name="restauranteem"></td>
+                        <td><input type="hidden" value="<%=restaurante%>" name="restauranteem"></td>
                         <tr>
                             <td class="fila1">Nombre: </td>
                             <td class="fila2"><input type="text" id="nombreem" name="nombreem"></td>

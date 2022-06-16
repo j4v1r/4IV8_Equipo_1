@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class MUsuario {
     
     private String correo, contrasena, nombre_persona, appat, apmat, nombre_restaurante, tipo_rol;
-    private int id_persona, id_rol, telefono;
+    private int id_rol, telefono;
     
     public void MUsuario(){
     
@@ -47,13 +47,12 @@ public class MUsuario {
             //Se busca el usuario
             while(rs.next()){
                 usuario = new MUsuario();
-                usuario.setId_persona(rs.getInt("id_persona"));
+                usuario.setCorreo(rs.getString("correo"));
                 usuario.setNombre_persona(rs.getString("nombre_persona"));
                 usuario.setAppat(rs.getString("appat"));
                 usuario.setApmat(rs.getString("apmat"));
                 usuario.setTelefono(rs.getInt("telefono"));
                 usuario.setNombre_restaurante(rs.getString("nombre_restaurante"));
-                usuario.setCorreo(rs.getString("correo"));
                 usuario.setContrasena(rs.getString("contrasena"));
                 usuario.setId_rol(rs.getInt("id_rol"));
                 usuario.setTipo_rol(rs.getString("tipo_rol"));
@@ -99,13 +98,12 @@ public class MUsuario {
             
             if(rs.next()){
                 
-                e.setId_persona(rs.getInt(1));
+                e.setCorreo(rs.getString(1));
                 e.setNombre_persona(rs.getString(2));
                 e.setAppat(rs.getString(3));
                 e.setApmat(rs.getString(4));
                 e.setTelefono(rs.getInt(5));
                 e.setNombre_restaurante(rs.getString(6));
-                e.setCorreo(rs.getString(7));
                 e.setContrasena(rs.getString(8));
                 e.setId_rol(rs.getInt(9));
                 e.setTipo_rol(rs.getString(10));
@@ -138,14 +136,6 @@ public class MUsuario {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }
-
-    public int getId_persona() {
-        return id_persona;
-    }
-
-    public void setId_persona(int id_persona) {
-        this.id_persona = id_persona;
     }
 
     public int getId_rol() {

@@ -135,7 +135,7 @@ if(sesionuser.getAttribute("usuario")==null){
                         if(rol==2){
                     %>
                     <td>
-                        <a href="ingredientes.jsp#modificar_ingrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                        <a href="editingrediente.jsp?id_ingrediente=<%=e.getId_ingrediente()%>#modificar_ingrediente"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                         <a href="eliminarIngrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                     <%

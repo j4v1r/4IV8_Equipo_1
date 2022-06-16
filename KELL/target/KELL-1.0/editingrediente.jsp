@@ -1,7 +1,7 @@
 <%-- 
-    Document   : ingredientes
-    Created on : 24/05/2022, 07:21:55 PM
-    Author     : Alumno
+    Document   : editingrediente
+    Created on : 11/06/2022, 01:42:57 PM
+    Author     : Rogelio Colunga R
 --%>
 
 <%@page import="Modelo.MUsuario"%>
@@ -135,7 +135,7 @@ if(sesionuser.getAttribute("usuario")==null){
                         if(rol==2){
                     %>
                     <td>
-                        <a href="editingrediente.jsp?id_ingrediente=<%=e.getId_ingrediente()%>#modificar_ingrediente"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                        <a href="editingrediente.jsp#modificar_ingrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                         <a href="eliminarIngrediente?id_ingrediente=<%=e.getId_ingrediente()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                     </td>
                     <%
@@ -221,6 +221,12 @@ if(sesionuser.getAttribute("usuario")==null){
 
         <!-- MODAL MODIFICAR INGREDIENTE -->
         
+        <%
+            int id_ingrediente = Integer.parseInt(request.getParameter("id_ingrediente"));
+        
+            MIngrediente e = AccionesIngrediente.buscarIngredienteID(id_ingrediente);
+        %>
+        
         
         <div id="modificar_ingrediente" class="modal">
             <div class="ventana">
@@ -228,7 +234,7 @@ if(sesionuser.getAttribute("usuario")==null){
                     X
                 </a>
                 <br>
-                <form action="" method="post" class="ingredienteform">
+                <form action="actualizarMIngrediente" method="post" class="ingredienteform">
                     <table class="nuevoingrediente">
                         
                         <tr class="insr">
@@ -237,45 +243,43 @@ if(sesionuser.getAttribute("usuario")==null){
                         <tr class="insr">
                             <td colspan="2">Introduzca los datos del nuevo ingrediente</td>
                         </tr>
-                        
                         <tr class="espacio"></tr>
-                        <tr>
-                            <td class="fila1">Id: </td>
-                            <td class="fila2"><input type="text" id="idingrediente" value=""></td>
-                        </tr>
+                            <td class="fila2"><input type="hidden" id="idingrediente" value="<%=e.getId_ingrediente()%>" name="id_ingrediente"></td>
                         <tr>
                             <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="ingredientenuevo" value=""></td>
+                            <td class="fila2"><input type="text" id="ingredientenuevo" value="<%=e.getNombre_ingrediente()%>" name="ingredientecambio"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Precio: </td>
-                            <td class="fila2"><input type="text" id="precionuevo"></td>
+                            <td class="fila2"><input type="text" id="precionuevo" value="<%=e.getPrecio_ingrediente()%>" name="precioingredientecambio"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Cantidad: </td>
-                            <td class="fila2"><input type="number" id="cantidadnueva"></td>
+                            <td class="fila2"><input type="text" id="cantidadnueva" value="<%=e.getCantidad_compra()%>" name="cantidadingredientecambio"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="" id="">
-                                <option value="">Litro (l)</option>
-                                <option value="">Mililitro (ml)</option>
-                                <option value="">Kilogramo (kg)</option>
-                                <option value="">Gramo (gr)</option>
-                                <option value="">Libra (lb)</option>
-                                <option value="">Onza (oz)</option>
-                                <option value="">Porción (pr)</option>
-                                <option value="">Pieza (pz)</option>
-
+                            <td class="fila2"><select name="umingredientecambio" id="4">
+                            <option value="<%=e.getId_unidadmedida()%>"><%=e.getNombre_unidad()%></option>
+                            <% 
+                            List<CUnidadMedida> lista3 = AccionesUnidadMedida.getAllUnidadMedida();
+                            for(CUnidadMedida f : lista3){
+                            %>
+                        
+                           <option value="<%=f.getId_unidadmedida()%>"><%=f.getNombre_unidad()%></option>
+                           
+                            <%
+                                }
+                            %>
                             </select></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
-                            <td class=""><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class=""><button onclick="location.href='#'" type="button"><b>APLICAR</b></button></td>
+                            <td class=""><button onclick="location.href='ingredientes.jsp'" type="button"><b>CANCELAR</b></button></td>
+                            <td class=""><button type="submit"><b>APLICAR</b></button></td>
                         </tr>
 
                     </table>

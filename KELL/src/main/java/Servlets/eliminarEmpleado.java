@@ -33,9 +33,9 @@ public class eliminarEmpleado extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int id_persona = Integer.parseInt(request.getParameter("id_persona"));
+            String correo = request.getParameter("correo");
             
-            int estatus = AccionesMPersona.eliminarEmpleado(id_persona);
+            int estatus = AccionesMPersona.eliminarEmpleado(correo);
             
             if(estatus > 0){
                 response.sendRedirect("empleados.jsp");

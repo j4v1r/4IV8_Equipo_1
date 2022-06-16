@@ -40,6 +40,7 @@ public class guardarEmpleado extends HttpServlet {
             String nombre, appat, apmat, restaurante, correo, contrasena;
             int telefono;
             
+            
             nombre = request.getParameter("nombreem");
             appat = request.getParameter("appatem");
             apmat = request.getParameter("apmatem");
@@ -51,6 +52,8 @@ public class guardarEmpleado extends HttpServlet {
             
             MPersona e = new MPersona();
             
+            e.setCorreo(correo);
+            e.setContrasena(contrasena);
             e.setNombre_persona(nombre);
             e.setAppat(appat);
             e.setApmat(apmat);
@@ -58,22 +61,11 @@ public class guardarEmpleado extends HttpServlet {
             e.setNombre_restaurante(restaurante);
             
             
-            MUsuario u = new MUsuario();
-            
-            u.setCorreo(correo);
-            u.setContrasena(contrasena);
-            
             int estatusp = AccionesMPersona.registrarPersonaEmpleado(e);
             
             
             if(estatusp>0){
-                int estatusu = AccionesUsuario.registrarUsuarioEmpleado(u);
-                if(estatusu>0){
-                    response.sendRedirect("empleados.jsp");
-                }else{
-                response.sendRedirect("error.jsp");
-                }
-                    
+                    response.sendRedirect("empleados.jsp");    
             }else{
                 response.sendRedirect("error.jsp");
             }
