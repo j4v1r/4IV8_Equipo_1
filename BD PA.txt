@@ -1,4 +1,4 @@
-Vistas
+VIEWS
 
 CREATE VIEW `darticulomuestra` AS
     SELECT 
@@ -87,12 +87,12 @@ CREATE VIEW `personamuestra` AS
         JOIN `crol` ON ((`mpersona`.`id_rol` = `crol`.`id_rol`)));
 
 
-Trigger registro en MCostoIngrediente
+
+TRIGGERS
+
+
 DELIMITER $$
- create trigger registroUnitario 
- after insert on mingrediente
- for each row
- begin 
+ CREATE TRIGGER `registroUnitario` AFTER INSERT ON `mingrediente` FOR EACH ROW begin 
     
     if(new.id_unidadmedida=1) then
     insert into mcostoingrediente (precio_unitario, id_unidadmedida, id_ingrediente) values 
@@ -118,6 +118,98 @@ DELIMITER $$
     insert into mcostoingrediente (precio_unitario, id_unidadmedida, id_ingrediente) values 
     ((new.precio_ingrediente)/(new.cantidad_compra),5,new.id_ingrediente);
     end if;
+     
+END
     
-END 
-$$DELIMITER
+$$
+
+
+DELIMITER $$
+ CREATE TRIGGER `registroUnitarioUpdate` AFTER UPDATE ON `mingrediente` FOR EACH ROW begin 
+    
+    if(new.id_unidadmedida=1) then
+    UPDATE mcostoingrediente SET precio_unitario = (new.precio_ingrediente)/(1000*new.cantidad_compra) WHERE id_ingrediente = new.id_ingrediente;
+    end if;
+    
+    if(new.id_unidadmedida=2) then
+    UPDATE mcostoingrediente SET precio_unitario = (new.precio_ingrediente)/(new.cantidad_compra) WHERE id_ingrediente = new.id_ingrediente;
+    end if;
+    
+    if(new.id_unidadmedida=3) then
+    UPDATE mcostoingrediente set precio_unitario = (new.precio_ingrediente)/(1000*new.cantidad_compra) WHERE id_ingrediente = new.id_ingrediente;
+    end if;
+    
+    if(new.id_unidadmedida=4) then
+    UPDATE mcostoingrediente SET precio_unitario =  (new.precio_ingrediente)/(new.cantidad_compra) WHERE id_ingrediente = new.id_ingrediente;
+    end if;
+    
+    if(new.id_unidadmedida=5) then
+    UPDATE mcostoingrediente SET precio_unitario = (new.precio_ingrediente)/(new.cantidad_compra) WHERE id_ingrediente = new.id_ingrediente;
+    end if;
+     
+END
+    
+$$
+
+
+DELIMITER $$
+CREATE TRIGGER `costommenu` AFTER INSERT ON `darticulo` FOR EACH ROW begin
+	update marticulo set costo_marticulo=(select sum(costo_darticulo) from darticulo where id_articulo=new.id_articulo) where id_articulo=new.id_articulo;
+END
+
+$$
+
+DELIMITER $$
+CREATE TRIGGER `costommenuupdate` AFTER UPDATE ON `darticulo` FOR EACH ROW begin
+	update marticulo set costo_marticulo=(select sum(costo_darticulo) from darticulo where id_articulo=new.id_articulo) where id_articulo=new.id_articulo;
+END
+$$
+
+
+DELIMITER $$
+CREATE TRIGGER `costommenudelete` AFTER DELETE ON `darticulo` FOR EACH ROW begin
+	update marticulo set costo_marticulo=(select sum(costo_darticulo) from darticulo where id_articulo=old.id_articulo) where id_articulo=old.id_articulo;
+END
+$$
+
+DELIMITER $$
+CREATE TRIGGER `costodmenu` BEFORE INSERT ON `darticulo` FOR 
+EACH ROW SET new.costo_darticulo=(select costo_ereceta from ereceta where id_ereceta=new.id_ereceta)*new.cantidad_articulo;
+$$
+
+DELIMITER $$
+CREATE TRIGGER `costodmenuupdate` BEFORE UPDATE ON `darticulo` FOR 
+EACH ROW BEGIN SET new.costo_darticulo=(select costo_ereceta from ereceta where id_ereceta=new.id_ereceta)*new.cantidad_articulo;
+end
+$$
+
+DELIMITER $$
+CREATE TRIGGER `registroCostoEreceta` AFTER INSERT ON `dreceta` FOR 
+EACH ROW begin update ereceta set costo_ereceta=(select sum(costo_dreceta) from dreceta where id_ereceta=new.id_ereceta) where id_ereceta=new.id_ereceta;
+END
+$$
+
+DELIMITER $$
+CREATE TRIGGER `registroCostoErecetaDelete` AFTER delete ON `dreceta` FOR 
+EACH ROW begin update ereceta set costo_ereceta=(select sum(costo_dreceta) from dreceta where id_ereceta=old.id_ereceta) where id_ereceta=old.id_ereceta;
+END
+$$
+
+
+DELIMITER $$
+CREATE TRIGGER `registroCostoErecetaUpdate` AFTER UPDATE ON `dreceta` FOR 
+EACH ROW begin update ereceta set costo_ereceta=(select sum(costo_dreceta) from dreceta where id_ereceta=new.id_ereceta) where id_ereceta=new.id_ereceta;
+END
+$$
+
+
+DELIMITER $$
+CREATE TRIGGER `costoDreceta` BEFORE INSERT ON `dreceta` FOR 
+EACH ROW set new.costo_dreceta=(select precio_unitario from mcostoingrediente where id_ingrediente=new.id_ingrediente)*new.cantidad_dingrediente;
+$$
+
+DELIMITER $$
+CREATE TRIGGER `costoDrecetaUpdate` BEFORE UPDATE ON `dreceta` FOR 
+EACH ROW set new.costo_dreceta=(select precio_unitario from mcostoingrediente where id_ingrediente=new.id_ingrediente)*new.cantidad_dingrediente;
+$$
+
