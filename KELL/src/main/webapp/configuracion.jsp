@@ -126,9 +126,9 @@ if(sesionuser.getAttribute("usuario")==null){
                 <td><%=e.getApmat()%></td>
                 <td><%=e.getCorreo()%></td>
                 <td><%=e.getNombre_restaurante()%></td>
-                <td><%=e.getTelefono()%></td>
+                <td>55<%=e.getTelefono()%></td>
                 <td>
-                    <a href="#modificar_adminis"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                    <a href="editperfil.jsp?correo=<%=usuario%>#modificar_adminis"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                 </td>
               </tr>
             </tbody>
@@ -146,81 +146,6 @@ if(sesionuser.getAttribute("usuario")==null){
     %>
     <%  }   %>
 
-    <!-- MODALS WIIIII -->
-
-    <!-- MODAL MODIFICAR ADMINISTRADOR -->
-
-    <div id="modificar_adminis" class="modal">
-        <div class="ventana">
-            <a href="#"  class="cerrar">
-                X
-            </a>
-            <br>
-            <form action="" method="post" class="ingredienteform">
-                <table class="nuevoingrediente">
-                    <tr class="insr">
-                        <td colspan="2"><b>Modificar Administador</b></td>
-                    </tr>
-                    <tr class="insr">
-                        <td colspan="2">Introduzca los datos del administrador</td>
-                    </tr>
-                    <tr class="espacio"></tr>
-                    <tr>
-                        <td class="fila1">Nombre: </td>
-                        <td class="fila2"><input type="text" id="adminino"></td>
-                    </tr>
-                    <tr class="espacio1"></tr>
-                    <tr>
-                        <td class="fila1">Apellido Paterno: </td>
-                        <td class="fila2"><input type="text" id="adminiappat"></td>
-                    </tr>
-                    <tr class="espacio1"></tr>
-                    <tr>
-                        <td class="fila1">Apellido Materno: </td>
-                        <td class="fila2"><input type="text" id="adminiapmat"></td>
-                    </tr>
-                    <tr class="espacio1"></tr>
-                    <tr>
-                        <td class="fila1">Correo electrónico: </td>
-                        <td class="fila2"><input type="text" id="adminico"></td>
-                    </tr>
-                    <tr class="espacio1"></tr>
-                    <tr>
-                        <td class="fila1">Nombre de la empresa: </td>
-                        <td class="fila2"><input type="text" id="adminiem"></td>
-                    </tr>
-                    <tr class="espacio1"></tr>
-                    <tr>
-                        <td class="fila1">País: </td>
-                        <td class="fila2"><select name="" id="">
-                            <option value="">México</option>
-                            <option value="">EUA</option>
-                            <option value="">China</option>
-                            <option value="">Canadá</option>
-                            <option value="">India</option>
-                            <option value="">Argentina</option>
-                            <option value="">España</option>
-                            <option value="">Inglaterra</option>
-
-                        </select></td>
-                    </tr>
-                    <tr class="espacio1"></tr>
-                    <tr>
-                        <td class="fila1">Teléfono: </td>
-                        <td class="fila2"><input type="number" id="adminite"></td>
-                    </tr>
-                    <tr class="espacio"></tr>
-                    <tr>
-                        <td class=""><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                        <td class=""><button onclick="location.href='#'" type="button"><b>APLICAR</b></button></td>
-                    </tr>
-                </table>
-            </form>
-            <!-- <a href="#IrVentanaFlotante2" style='text-decoration:none;'>
-                Avanzar
-            </a> -->
-        </div>
-    </div>
          
     </main>
    

@@ -88,6 +88,14 @@
         <servlet-name>actualizarDArticulo</servlet-name>
         <servlet-class>Servlets.actualizarDArticulo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>actualizarMUsuario</servlet-name>
+        <servlet-class>Servlets.actualizarMUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>actualizarEmpleado</servlet-name>
+        <servlet-class>Servlets.actualizarEmpleado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarIngrediente</servlet-name>
         <url-pattern>/guardarIngrediente</url-pattern>
@@ -175,6 +183,14 @@
     <servlet-mapping>
         <servlet-name>actualizarDArticulo</servlet-name>
         <url-pattern>/actualizarDArticulo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizarMUsuario</servlet-name>
+        <url-pattern>/actualizarMUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizarEmpleado</servlet-name>
+        <url-pattern>/actualizarEmpleado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,9 +1,12 @@
 <%-- 
-    Document   : empleados
-    Created on : 24/05/2022, 08:32:57 PM
-    Author     : Alumno
+    Document   : editempleado
+    Created on : 22/06/2022, 08:59:30 AM
+    Author     : Rogelio Colunga R
 --%>
 
+
+<%@page import="Modelo.MUsuario"%>
+<%@page import="Controlador.AccionesUsuario"%>
 <%@page import="Modelo.MPersona"%>
 <%@page import="Modelo.MPersona"%>
 <%@page import="java.util.List"%>
@@ -128,7 +131,7 @@ if(sesionuser.getAttribute("usuario")==null){
                 <td><%=e.getCorreo()%></td>
                 <td>55<%=e.getTelefono()%></td>
                 
-                <td><a href="editempleado.jsp?correo=<%=e.getCorreo()%>#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                     <a href="eliminarEmpleado?correo=<%=e.getCorreo()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                 </td>
               </tr>
@@ -150,7 +153,7 @@ if(sesionuser.getAttribute("usuario")==null){
         
         <!-- MODALS WIIIII -->
 
-
+        
         <!-- MODAL AGREGAR INGREDIENTE -->
         <div id="agregar_empleado" class="modal">
             <div class="ventana">
@@ -212,51 +215,61 @@ if(sesionuser.getAttribute("usuario")==null){
         </div>
 
         <!-- MODAL MODIFICAR EMPLEADO -->
+        <%
+        
+            String correo = request.getParameter("correo");
+            
+            MUsuario f = AccionesUsuario.buscarEmpleadoID(correo);
+
+        %>
 
         <div id="modificar_empleado" class="modal">
             <div class="ventana">
-                <a href="#"  class="cerrar">
+                <a href="empleados.jsp"  class="cerrar">
                     X
                 </a>
                 <br>
-                <form action="" method="post" class="ingredienteform">
+                <form action="actualizarEmpleado" method="post" class="ingredienteform">
                     <table class="nuevoingrediente">
                         <tr class="insr">
                             <td colspan="2"><b>Modificar Empleado</b></td>
+                        </tr>
+                        <tr class="insr">
+                            <td colspan="2">Introduzca los datos a cambiar del empleado</td>
                         </tr>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="ingredientenuevo"></td>
+                            <td class="fila2"><input type="text" id="ingredientenuevo" value="<%=f.getNombre_persona()%>" name="nome"></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1">Apellido Paterno: </td>
-                            <td class="fila2"><input type="text" id="appatem"></td>
+                            <td class="fila2"><input type="text" id="appatem" value="<%=f.getAppat()%>" name="appate"></td>
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
                             <td class="fila1">Apellido Materno: </td>
-                            <td class="fila2"><input type="text" id="apmatem"></td>
+                            <td class="fila2"><input type="text" id="apmatem" value="<%=f.getApmat()%>" name="apmate"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
-                            <td class="fila1">Correo: </td>
-                            <td class="fila2"><input type="text" id="precionuevo"></td>
+                            <td class="fila1">Teléfono: </td>
+                            <td class="fila2"><input type="text" id="adminite" value="<%=f.getTelefono()%>" name="tele"></td>
                         </tr>
                         <tr class="espacio1"></tr>
                         <tr>
                             <td class="fila1">Contraseña: </td>
-                            <td class="fila2"><input type="number" id="cantidadnueva"></td>
+                            <td class="fila2"><input type="text" id="cantidadnueva" value="<%=f.getContrasena()%>" name="passe"></td>
                         </tr>
                         <tr class="espacio1"></tr>
-                        
+                        <td><input type="hidden" value="<%=f.getCorreo()%>" name="correoe"></td>
                         <tr class="espacio"></tr>
                         <tr>
                             
-                            <td class=""><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class=""><button onclick="location.href='#'" type="button"><b>APLICAR</b></button></td>
+                            <td class=""><button onclick="location.href='empleados.jsp'" type="button"><b>CANCELAR</b></button></td>
+                            <td class=""><button type="submit"><b>APLICAR</b></button></td>
                         </tr>
                     </table>
                 </form>

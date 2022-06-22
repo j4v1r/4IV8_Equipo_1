@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.MPersona;
+import Modelo.MUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -162,6 +163,38 @@ public class AccionesMPersona {
             System.out.println(ex.getMessage());
             
         
+        }
+        return estatus;
+    }
+    
+    public static int actualizarEmpleado(MUsuario e){
+        
+        //Estado de la query, se actualizo el ingrediente o no
+        int estatus = 0;
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "update mpersona set nombre_persona=?, appat=?, apmat=?, telefono=?, contrasena=? where correo=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setString(1, e.getNombre_persona());
+            ps.setString(2, e.getAppat());
+            ps.setString(3, e.getApmat());
+            ps.setInt(4, e.getTelefono());
+            ps.setString(5, e.getContrasena());
+            ps.setString(6, e.getCorreo());
+            
+            estatus = ps.executeUpdate();
+            
+            System.out.println("Se actualizo el empleado");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo actualizar el empleado");
+            System.out.println(ex.getMessage());
         }
         return estatus;
     }

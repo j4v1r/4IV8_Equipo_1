@@ -128,7 +128,7 @@ if(sesionuser.getAttribute("usuario")==null){
                 <td><%=e.getCorreo()%></td>
                 <td>55<%=e.getTelefono()%></td>
                 
-                <td><a href="#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                <td><a href="editempleado.jsp?correo=<%=e.getCorreo()%>#modificar_empleado"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                     <a href="eliminarEmpleado?correo=<%=e.getCorreo()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                 </td>
               </tr>
@@ -164,7 +164,7 @@ if(sesionuser.getAttribute("usuario")==null){
                             <td colspan="2"><b>Nuevo Empleado</b></td>
                         </tr>
                         <tr class="insr">
-                            <td colspan="2">Introduzca los datos del nuevo Empleado</td>
+                            <td colspan="2">Introduzca los datos del nuevo empleado</td>
                         </tr>
                         <tr class="espacio"></tr>
                         <td><input type="hidden" value="<%=restaurante%>" name="restauranteem"></td>

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : configuracion
-    Created on : 24/05/2022, 08:00:16 PM
-    Author     : Alumno
+    Document   : editperfil
+    Created on : 21/06/2022, 11:57:26 PM
+    Author     : Rogelio Colunga R
 --%>
 
 <%@page import="Modelo.MUsuario"%>
@@ -126,9 +126,9 @@ if(sesionuser.getAttribute("usuario")==null){
                 <td><%=e.getApmat()%></td>
                 <td><%=e.getCorreo()%></td>
                 <td><%=e.getNombre_restaurante()%></td>
-                <td>55<%=e.getTelefono()%></td>
+                <td><%=e.getTelefono()%></td>
                 <td>
-                    <a href="editperfil.jsp?correo=<%=usuario%>#modificar_adminis"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                    <a href="#modificar_adminis"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                 </td>
               </tr>
             </tbody>
@@ -146,6 +146,57 @@ if(sesionuser.getAttribute("usuario")==null){
     %>
     <%  }   %>
 
+    <!-- MODALS WIIIII -->
+
+    <!-- MODAL MODIFICAR ADMINISTRADOR -->
+
+    <div id="modificar_adminis" class="modal">
+        <div class="ventana">
+            <a href="configuracion.jsp"  class="cerrar">
+                X
+            </a>
+            <br>
+            <form action="actualizarMUsuario" method="post" class="ingredienteform">
+                <table class="nuevoingrediente">
+                    <tr class="insr">
+                        <td colspan="2"><b>Editar Perfil</b></td>
+                    </tr>
+                    <tr class="insr">
+                        <td colspan="2">Introduzca los datos a cambiar del perfil</td>
+                    </tr>
+                    <tr class="espacio"></tr>
+                    <tr>
+                        <td class="fila1">Nombre: </td>
+                        <td class="fila2"><input type="text" id="adminino" value="<%=e.getNombre_persona()%>" name="nome"></td>
+                    </tr>
+                    <tr class="espacio1"></tr>
+                    <tr>
+                        <td class="fila1">Apellido Paterno: </td>
+                        <td class="fila2"><input type="text" id="adminiappat" value="<%=e.getAppat()%>" name="appate"></td>
+                    </tr>
+                    <tr class="espacio1"></tr>
+                    <tr>
+                        <td class="fila1">Apellido Materno: </td>
+                        <td class="fila2"><input type="text" id="adminiapmat" value="<%=e.getApmat()%>" name="apmate"></td>
+                    </tr>
+                    <td class="fila2"><input type="hidden" id="adminico" value="<%=e.getCorreo()%>" name="correoe"></td>
+                    <tr class="espacio1"></tr>
+                    <tr>
+                        <td class="fila1">Teléfono: </td>
+                        <td class="fila2"><input type="text" id="adminite" value="<%=e.getTelefono()%>" name="tele"></td>
+                    </tr>
+                    <tr class="espacio"></tr>
+                    <tr>
+                        <td class=""><button onclick="location.href='configuracion.jsp'" type="button"><b>CANCELAR</b></button></td>
+                        <td class=""><button type="submit"><b>APLICAR</b></button></td>
+                    </tr>
+                </table>
+            </form>
+            <!-- <a href="#IrVentanaFlotante2" style='text-decoration:none;'>
+                Avanzar
+            </a> -->
+        </div>
+    </div>
          
     </main>
    

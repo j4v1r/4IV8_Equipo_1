@@ -104,9 +104,9 @@ public class MUsuario {
                 e.setApmat(rs.getString(4));
                 e.setTelefono(rs.getInt(5));
                 e.setNombre_restaurante(rs.getString(6));
-                e.setContrasena(rs.getString(8));
-                e.setId_rol(rs.getInt(9));
-                e.setTipo_rol(rs.getString(10));
+                e.setContrasena(rs.getString(7));
+                e.setId_rol(rs.getInt(8));
+                e.setTipo_rol(rs.getString(9));
                 
             }
             
