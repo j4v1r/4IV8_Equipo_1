@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
+
 package Servlets;
 
+import Controlador.AccionesMPersona;
 import Controlador.AccionesUsuario;
+import Modelo.MPersona;
 import Modelo.MUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,9 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Alumno
+ * @author Rogelio Colunga R
  */
-/*
 public class guardarUsuario extends HttpServlet {
 
     /**
@@ -31,43 +32,45 @@ public class guardarUsuario extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     /
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. /
-            String nom, appat, apmat, email, restaurante, contrasena;
+            /* TODO output your page here. You may use following sample code. */
+            String nombre, appat, apmat, restaurante, correo, contrasena;
             int telefono;
-           
             
-            nom = request.getParameter("regnomnre");
+            
+            nombre = request.getParameter("regnombre");
             appat = request.getParameter("regappat");
             apmat = request.getParameter("regapmat");
-            email = request.getParameter("regcorreo"); 
-            restaurante = request.getParameter("regempresa"); 
-            contrasena = request.getParameter("regcontra"); 
-            telefono = parseInt(request.getParameter("regtel")); 
+            telefono = parseInt(request.getParameter("regtel"));
+            restaurante = request.getParameter("regempresa");
+            correo = request.getParameter("regcorreo");
+            contrasena = request.getParameter("regcontra");
             
-            MUsuario e = new MUsuario();
             
-            e.setNombre(nom);
-            e.setPassword(pass);
-            e.setEmail(email);
-            e.setPais(pais);
+            MPersona e = new MPersona();
             
-            //ejecuto la querry
+            e.setCorreo(correo);
+            e.setContrasena(contrasena);
+            e.setNombre_persona(nombre);
+            e.setAppat(appat);
+            e.setApmat(apmat);
+            e.setTelefono(telefono);
+            e.setNombre_restaurante(restaurante);
             
-            int estatus = AccionesUsuario.registroUsuario(e);
             
-            if(estatus > 0){
-                response.sendRedirect("index.html");
+            int estatusp = AccionesMPersona.registrarPersona(e);
+            
+            
+            if(estatusp>0){
+                    response.sendRedirect("insesion.jsp");    
             }else{
                 response.sendRedirect("error.jsp");
             }
-            
-            
-        }
+             
         }
     }
 
@@ -79,7 +82,7 @@ public class guardarUsuario extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     /
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -93,7 +96,7 @@ public class guardarUsuario extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     /
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -104,10 +107,10 @@ public class guardarUsuario extends HttpServlet {
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
-     *
+     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
-}*/
+}

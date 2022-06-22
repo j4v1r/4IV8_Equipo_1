@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class AccionesMPersona {
     
-    public static List<MPersona> getAllEmpleados(){
+    public static List<MPersona> getAllEmpleados(String nombre_restaurante){
         //Declaración ArrayList
         List<MPersona> lista = new ArrayList<MPersona>();
         
@@ -26,9 +26,11 @@ public class AccionesMPersona {
             //Conexión
             Connection con = Conexion.getConection();
             
-            String q = "select * from personamuestra where id_rol=2";
+            String q = "select * from personamuestra where id_rol=2 and nombre_restaurante=?";
             
             PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setString(1, nombre_restaurante);
             
             ResultSet rs = ps.executeQuery();
             
@@ -123,6 +125,43 @@ public class AccionesMPersona {
         }catch(Exception ex){
             System.out.println("No se pudo elimnar la persona");
             System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
+    
+    public static int registrarPersona(MPersona e){
+        
+        int estatus=0;
+        
+        try{ 
+            
+        Connection con = Conexion.getConection();
+        
+        String q = "insert into mpersona"
+                + "(correo, nombre_persona, appat, apmat, telefono, nombre_restaurante, contrasena, id_rol)"
+                + "values (?,?,?,?,?,?,?,1)";
+        
+        
+        PreparedStatement ps = con.prepareStatement(q);
+        
+        ps.setString(1, e.getCorreo());
+        ps.setString(2, e.getNombre_persona());
+        ps.setString(3, e.getAppat());
+        ps.setString(4, e.getApmat());
+        ps.setInt(5, e.getTelefono());
+        ps.setString(6, e.getNombre_restaurante());
+        ps.setString(7, e.getContrasena());
+        
+        estatus = ps.executeUpdate();
+            
+        System.out.println("Registro Exitoso en MPersona");
+        con.close();
+            
+        }catch(Exception ex){
+            System.out.println("Error al registrar en MPersona");
+            System.out.println(ex.getMessage());
+            
+        
         }
         return estatus;
     }

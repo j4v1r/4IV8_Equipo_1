@@ -139,7 +139,7 @@ if(sesionuser.getAttribute("usuario")==null){
                             if(rol==2){
                         %>
                         <td>
-                            <a href="#modificar_ingrediente?id_ingrediente="><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                            <a href="editdmenu.jsp?id_darticulo=<%=u.getId_darticulo()%>&id_articulo=<%=e.getId_articulo()%>#modificar_ingrediente"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                             <a href="eliminarDArticulo?id_darticulo=<%=u.getId_darticulo()%>&id_articulo=<%=e.getId_articulo()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                         </td>
                         <%

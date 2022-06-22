@@ -151,4 +151,73 @@ public class AccionesEReceta {
         return e;
     }
     
+    public static EReceta buscarERecetaAll(int id_ereceta){
+        //donde se crea el objeto del empleado
+        EReceta e = new EReceta();
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "select * from erecetaUnidad where id_ereceta=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_ereceta);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+         
+                e.setId_ereceta(rs.getInt(1));
+                e.setNombre_receta(rs.getString(2));
+                e.setCantidad_receta(rs.getFloat(3));
+                e.setId_unidadmedida(rs.getInt(4));
+                e.setCosto_ereceta(rs.getFloat(5));
+                e.setNombre_unidad(rs.getString(6));
+            }
+            
+            System.out.println("Se busco el id_ereceta");
+            con.close();
+            
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo buscar al id_ereceta");
+            System.out.println(ex.getMessage());
+        }
+        return e;
+    }
+    
+    public static int actualizarEReceta(EReceta e){
+        
+        //Estado de la query, se actualizo el ingrediente o no
+        int estatus = 0;
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "update ereceta set nombre_receta=?, cantidad_receta=?, id_unidadmedida=? where id_ereceta=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setString(1, e.getNombre_receta());
+            ps.setFloat(2, e.getCantidad_receta());
+            ps.setInt(3, e.getId_unidadmedida());
+            ps.setInt(4, e.getId_ereceta());
+            
+            estatus = ps.executeUpdate();
+            
+            
+            
+            System.out.println("Se actualizo el ingrediente");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo actualizar el ingrediente");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
+    
 }

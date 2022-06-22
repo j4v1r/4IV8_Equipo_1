@@ -72,6 +72,22 @@
         <servlet-name>eliminarDArticulo</servlet-name>
         <servlet-class>Servlets.eliminarDArticulo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>actualizarEReceta</servlet-name>
+        <servlet-class>Servlets.actualizarEReceta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>actualizarDReceta</servlet-name>
+        <servlet-class>Servlets.actualizarDReceta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>actualizarMArticulo</servlet-name>
+        <servlet-class>Servlets.actualizarMArticulo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>actualizarDArticulo</servlet-name>
+        <servlet-class>Servlets.actualizarDArticulo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarIngrediente</servlet-name>
         <url-pattern>/guardarIngrediente</url-pattern>
@@ -143,6 +159,22 @@
     <servlet-mapping>
         <servlet-name>eliminarDArticulo</servlet-name>
         <url-pattern>/eliminarDArticulo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizarEReceta</servlet-name>
+        <url-pattern>/actualizarEReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizarDReceta</servlet-name>
+        <url-pattern>/actualizarDReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizarMArticulo</servlet-name>
+        <url-pattern>/actualizarMArticulo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizarDArticulo</servlet-name>
+        <url-pattern>/actualizarDArticulo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

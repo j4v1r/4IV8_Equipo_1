@@ -147,4 +147,69 @@ public class AccionesMArticulo {
         return e;
     }
     
+    
+    public static MArticulo buscarMArticuloAll(int id_articulo){
+        //donde se crea el objeto del empleado
+        MArticulo e = new MArticulo();
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "select * from marticulo where id_articulo=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_articulo);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+         
+                e.setId_articulo(rs.getInt(1));
+                e.setNombre_articulo(rs.getString(2));
+                e.setCosto_marticulo(rs.getFloat(3));
+                e.setPrecio_venta(rs.getFloat(4));
+                e.setGanacia_articulo(rs.getFloat(5));
+            }
+            
+            System.out.println("Se busco el articulo");
+            con.close();
+            
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo buscar el articulo");
+            System.out.println(ex.getMessage());
+        }
+        return e;
+    }
+    
+    public static int actualizarMArticulo(MArticulo e){
+        
+        //Estado de la query, se actualizo el ingrediente o no
+        int estatus = 0;
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "update marticulo set nombre_articulo=?, precio_venta=? where id_articulo=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setString(1, e.getNombre_articulo());
+            ps.setFloat(2, e.getPrecio_venta());
+            ps.setInt(3, e.getId_articulo());
+            
+            estatus = ps.executeUpdate();
+            
+            System.out.println("Se actualizo el ingrediente");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo actualizar el ingrediente");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
 }

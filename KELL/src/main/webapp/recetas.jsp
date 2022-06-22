@@ -132,7 +132,7 @@ if(sesionuser.getAttribute("usuario")==null){
                         <%
                             if(rol==2){
                         %>
-                        <a href="#modificar_receta"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
+                        <a href="editreceta.jsp?id_ereceta=<%=e.getId_ereceta()%>#modificar_receta"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                         <a href="eliminarEReceta?id_ereceta=<%=e.getId_ereceta()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i></a>
                         <%
                             }else{
@@ -218,100 +218,6 @@ if(sesionuser.getAttribute("usuario")==null){
 
         </div>
 
-         <!-- MODAL AGREGAR INGREDIENTE -->
-         <div id="aña_ing" class="modal">
-            <div class="ventana">
-                <a href="#"  class="cerrar">
-                    X
-                </a>
-                <br>
-                <form action="" method="post" class="ingredienteform">
-                    <table class="nuevoingrediente">
-                        <tr class="insr">
-                            <td colspan="2"><b>Añadir Ingrediente</b></td>
-                        </tr>
-                        <tr class="espacio"></tr>
-                        <tr>
-                            <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="nom_ing_newrec"></td>
-                        </tr>
-                        <tr class="espacio1"></tr>
-                        <tr>
-                            <td class="fila1">Cantidad: </td>
-                            <td class="fila2"><input type="number" id="cant_ing_newrec"></td>
-                        </tr>
-                        <tr class="espacio1"></tr>
-                        <tr>
-                            <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="" id="unidad_ing_newrec">
-                                <option value="">Litro (l)</option>
-                                <option value="">Mililitro (ml)</option>
-                                <option value="">Kilogramo (kg)</option>
-                                <option value="">Gramo (gr)</option>
-                                <option value="">Libra (lb)</option>
-                                <option value="">Onza (oz)</option>
-                                <option value="">Porción (pr)</option>
-                                <option value="">Pieza (pz)</option>
-
-                            </select></td>
-                        </tr>
-                        <tr class="espacio"></tr>
-                        <tr>
-                            <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class="fila2"><button onclick="location.href='#'" type="button"><b>APLICAR</b></button></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-        </div>
-
-        <!-- MODAL AGREGAR SUB-RECETA -->
-        <div id="aña_rec" class="modal">
-            <div class="ventana">
-                <a href="#"  class="cerrar">
-                    X
-                </a>
-                <br>
-                <form action="" method="post" class="ingredienteform">
-                    <table class="nuevoingrediente">
-                        <tr class="insr">
-                            <td colspan="2"><b>Añadir Receta</b></td>
-                        </tr>
-                        <tr class="espacio"></tr>
-                        <tr>
-                            <td class="fila1">Nombre: </td>
-                            <td class="fila2"><input type="text" id="nom_subrec_newrec"></td>
-                        </tr>
-                        <tr class="espacio1"></tr>
-                        <tr>
-                            <td class="fila1">Cantidad: </td>
-                            <td class="fila2"><input type="number" id="cant_subrec_newrec"></td>
-                        </tr>
-                        <tr class="espacio1"></tr>
-                        <tr>
-                            <td class="fila1">Unidad de Medida: </td>
-                            <td class="fila2"><select name="" id="unidad_subrec_newrec">
-                                <option value="">Litro (l)</option>
-                                <option value="">Mililitro (ml)</option>
-                                <option value="">Kilogramo (kg)</option>
-                                <option value="">Gramo (gr)</option>
-                                <option value="">Libra (lb)</option>
-                                <option value="">Onza (oz)</option>
-                                <option value="">Porción (pr)</option>
-                                <option value="">Pieza (pz)</option>
-
-                            </select></td>
-                        </tr>
-                        <tr class="espacio"></tr>
-                        <tr>
-                            <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                            <td class="fila2"><button onclick="location.href='#'" type="button"><b>APLICAR</b></button></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-        </div>
-
         <!-- MODAL MODIFICAR RECETA -->
 
         <div id="modificar_receta" class="modal">
@@ -355,11 +261,6 @@ if(sesionuser.getAttribute("usuario")==null){
                         </tr>
                         <tr class="espacio"></tr>
                         <tr>
-                            <td class="fila1"><a href="#consul_rec"><button onclick="location.href='#'" type="button"><b>RECETAS</b></button></td>
-                            <td class="fila2"><a href="#consul_ing"><button onclick="location.href='#'" type="button"><b>INGREDIENTES</b></button></td>
-                        </tr>
-                        <tr class="espacio"></tr>
-                        <tr>
                             <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
                             <td class="fila2"><button onclick="location.href='#'" type="button"><b>MODIFICAR</b></button></td>
                         </tr>
@@ -368,93 +269,6 @@ if(sesionuser.getAttribute("usuario")==null){
                 </form>
             </div>
         </div>
-
-
-        <!-- MODAL CONSULTAR RECETAS -->
-
-
-        <div id="consul_rec" class="modal">
-            <div class="ventana">
-                <a href="#"  class="cerrar">
-                    X
-                </a>
-                <br>
-                <form action="" method="post" class="menuform">
-                    <table class="nuevomenu">
-                        <tr class="insr">
-                            <td colspan="2"><b>Recetas</b></td>
-                        </tr>
-                        <tr>
-                            <td class="fila2">
-                                <select name="" id="">
-                                    <option value="">Salsa Verde</option>
-                                    <option value="">Masa de galletas</option>
-                                    <option value="">Salsa Roja</option>
-                                    <option value="">Jugo de Naranja</option>
-                                    <option value="">Hot Cakes</option>
-                                    <option value="">Chilaquiles Rojos</option>
-                                </select>
-                                <a href="#modificar_rec"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i>
-                            </td>
-                        </tr>
-                        <tr class="espacio1"></tr>
-                        <tr>
-                            <td class="fila1"><a href="#aña_rec"><button onclick="location.href='#'" type="button"><b>AÑADIR SUB-RECETA</b></button></td>
-                        </tr>
-                        <tr class="espacio"></tr>
-                        <tr>
-                            <!-- <td class="fila1"><button onclick="location.href='#'" type="button"><b>AÑADIR RECETA</b></button></td>
-                            <td class="fila2"><button onclick="location.href='#'" type="button"><b>AÑADIR INGREDIENTE</b></button></td> -->
-                            <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                        </tr>
-                        
-                    </table>
-                </form>
-            </div>
-        </div>
-
-        <!-- MODAL CONSULTAR INGREDIENTE-->
-        <div id="consul_ing" class="modal">
-            <div class="ventana">
-                <a href="#"  class="cerrar">
-                    X
-                </a>
-                <br>
-                <form action="" method="post" class="menuform">
-                    <table class="nuevomenu">
-                        <tr class="insr">
-                            <td colspan="2"><b>Ingredientes</b></td>
-                        </tr>
-                        <tr>
-                            <td class="fila2">
-                                <select name="" id="">
-                                    <option value="">Tomate Verde</option>
-                                    <option value="">Zanahoria</option>
-                                    <option value="">Cebolla</option>
-                                    <option value="">Ajo</option>
-                                    <option value="">Chile Serrano</option>
-                                    <option value="">Sal</option>
-                                </select>
-                                <a href="#modificar_ing"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a><i class="fa-solid fa-trash-can" style="font-size: 20px;"></i>
-                            </td>
-                        </tr>
-                        <tr class="espacio1"></tr>
-                        <tr>
-                            <td class="fila1"><a href="#aña_rec"><button onclick="location.href='#'" type="button"><b>AÑADIR SUB-RECETA</b></button></td>
-                        </tr>
-                        <tr class="espacio"></tr>
-                        <tr>
-                            <!-- <td class="fila1"><button onclick="location.href='#'" type="button"><b>AÑADIR RECETA</b></button></td>
-                            <td class="fila2"><button onclick="location.href='#'" type="button"><b>AÑADIR INGREDIENTE</b></button></td> -->
-                            <td class="fila1"><button onclick="location.href='#'" type="button"><b>CANCELAR</b></button></td>
-                        </tr>
-                        
-                    </table>
-                </form>
-            </div>
-        </div>
-
-
     
     </main>
 

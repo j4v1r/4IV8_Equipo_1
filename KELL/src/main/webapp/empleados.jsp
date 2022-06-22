@@ -116,7 +116,9 @@ if(sesionuser.getAttribute("usuario")==null){
             </thead>
             <tbody>
                 <%
-                    List<MPersona> listaEmpleados = AccionesMPersona.getAllEmpleados();
+                    String nombre_restuarante = restaurante;
+                    
+                    List<MPersona> listaEmpleados = AccionesMPersona.getAllEmpleados(nombre_restuarante);
                             for(MPersona e : listaEmpleados){
                 %>
               <tr>

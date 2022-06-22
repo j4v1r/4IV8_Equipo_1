@@ -134,7 +134,6 @@ if(sesionuser.getAttribute("usuario")==null){
                         if(rol==2){
                     %>
                     <td>
-                        <a href="#modificar_inventario?id=<%=e.getId_inventario()%>"><i class="fa-solid fa-pen-to-square" style="font-size: 20px; margin-right: 1rem;" ></i></a>
                         <a href="eliminarInventario?id_inventario=<%=e.getId_inventario()%>"><i class="fa-solid fa-trash-can" style="font-size: 20px;"></a></i>
                     </td>
                     <%

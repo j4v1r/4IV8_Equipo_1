@@ -52,7 +52,7 @@
                 <input type="text" id="regcorreo" name="regcorreo" >
 
                 <div class="col2_form">
-                    <p id="empresa">Empresa:</p>
+                    <p id="empresa">Restaurante:</p>
                     <input type="text" id="regempresa" name="regempresa">
                    
                     <p id="tel">Teléfono:</p>
@@ -64,7 +64,7 @@
                     <p id="contra">Ingresa:</p>
                     <input type="password" id="regcontra" name="regcontra">
                     <p id="vercontra">Verifica:</p>
-                    <input type="password" id="regvercontra" name="regvercontra">
+                    <input type="password" id="regvercontra" >
 
                     <div class="btn_regsesion">
                         <a href="insesion.jsp"><input id="registrar" type="submit" value="Registrarse"></a>

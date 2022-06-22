@@ -121,5 +121,74 @@ public class AccionesDReceta {
         return estatus;
     }
     
+    public static DReceta buscarDRecetaAll(int id_dreceta){
+        //donde se crea el objeto del empleado
+        DReceta e = new DReceta();
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "select * from muestradreceta where id_dreceta=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id_dreceta);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+         
+                e.setId_dreceta(rs.getInt(1));
+                e.setId_ingrediente(rs.getInt(2));
+                e.setId_ereceta(rs.getInt(3));
+                e.setId_unidadmedida(rs.getInt(4));
+                e.setCantidad_ingrediente(rs.getFloat(5));
+                e.setCosto_dreceta(rs.getFloat(6));
+                e.setNombre_ingrediente(rs.getString(7));
+                e.setNombre_unidad(rs.getString(8));
+            }
+            
+            System.out.println("Se busco el id_dreceta");
+            con.close();
+            
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo buscar al id_dreceta");
+            System.out.println(ex.getMessage());
+        }
+        return e;
+    }
     
+    public static int actualizarDReceta(DReceta e){
+        
+        //Estado de la query, se actualizo el ingrediente o no
+        int estatus = 0;
+        
+        try{
+            //establecer es la conexion
+            Connection con = Conexion.getConection();
+            
+            String q = "update dreceta set id_ingrediente=?, id_unidadmedida=?, cantidad_dingrediente=? where id_dreceta=?";
+            
+            PreparedStatement ps = con.prepareStatement(q);
+            
+            ps.setInt(1, e.getId_ingrediente());
+            ps.setInt(2, e.getId_unidadmedida());
+            ps.setFloat(3, e.getCantidad_ingrediente());
+            ps.setInt(4, e.getId_dreceta());
+            
+            estatus = ps.executeUpdate();
+            
+            
+            
+            System.out.println("Se actualizo el ingrediente");
+            con.close();
+            
+        }catch(Exception ex){
+            System.out.println("No se pudo actualizar el ingrediente");
+            System.out.println(ex.getMessage());
+        }
+        return estatus;
+    }
 }
